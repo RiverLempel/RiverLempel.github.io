@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Python读写word文档</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li class="active"><a href="/category/pa-chong.html">爬虫</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pythondu-xie-wordwen-dang.html" rel="bookmark"
+           title="Permalink to Python读写word文档">Python读写word文档</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Mon 06 January 2020 &nbsp;
+In <a href="/category/pa-chong.html">爬虫</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-01-06T22:00:00+08:00">
+                Published: Mon 06 January 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/pa-chong.html">爬虫</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <p>python的docx用于处理word文件比较方便，基本的内容读写可以更快捷地促进文档化工作。</p>
+<h4>install</h4>
+<ul>
+<li>安装依赖包</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">docx</span>
+</pre></div>
+
+
+<h4>read</h4>
+<div class="highlight"><pre><span></span>    <span class="n">doc</span> <span class="o">=</span> <span class="n">docx</span><span class="p">.</span><span class="n">Document</span><span class="p">(</span><span class="ss">&quot;xxx.docx&quot;</span><span class="p">)</span>
+    <span class="o">#</span> <span class="err">读取内容</span>
+    <span class="n">paras</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">paragraphs</span>
+    <span class="o">#</span> <span class="err">读取表格</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">tables</span>
+</pre></div>
+
+
+<h4>write</h4>
+<div class="highlight"><pre><span></span>    <span class="nv">doc</span> <span class="o">=</span> <span class="nv">Document</span><span class="ss">()</span>
+    <span class="nv">doc</span>.<span class="nv">add_heading</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Head 标题</span><span class="s2">&quot;</span>, <span class="mi">0</span><span class="ss">)</span>
+    <span class="nv">doc</span>.<span class="nv">add_heading</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">次级标题</span><span class="s2">&quot;</span>, <span class="mi">1</span><span class="ss">)</span>
+    <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">Intense quote</span><span class="s1">&#39;</span>, <span class="nv">style</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">Intense Quote</span><span class="s1">&#39;</span><span class="ss">)</span>
+
+    # <span class="nv">normal</span>
+    <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">paragraph-one</span><span class="s2">&quot;</span><span class="ss">)</span>
+
+    # <span class="nv">unordered</span>
+    <span class="nv">p</span> <span class="o">=</span> <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">paragraph-two</span><span class="s2">&quot;</span><span class="ss">)</span>
+
+    <span class="nv">p</span>.<span class="nv">style</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">ListBullet</span><span class="s1">&#39;</span>
+    <span class="nv">p</span>.<span class="nv">add_run</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">content</span><span class="s1">&#39;</span><span class="ss">)</span>.<span class="nv">bold</span> <span class="o">=</span> <span class="nv">True</span>
+
+    # <span class="nv">ordered</span>
+    <span class="nv">p2</span> <span class="o">=</span> <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">paragraph-three</span><span class="s2">&quot;</span>,  <span class="nv">style</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">ListNumber</span><span class="s1">&#39;</span><span class="ss">)</span>
+
+    <span class="nv">records</span> <span class="o">=</span> <span class="ss">(</span>
+    <span class="ss">(</span><span class="mi">3</span>, <span class="s1">&#39;</span><span class="s">101</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">Spam</span><span class="s1">&#39;</span><span class="ss">)</span>,
+    <span class="ss">(</span><span class="mi">7</span>, <span class="s1">&#39;</span><span class="s">422</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">Eggs</span><span class="s1">&#39;</span><span class="ss">)</span>,
+    <span class="ss">(</span><span class="mi">4</span>, <span class="s1">&#39;</span><span class="s">631</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">Spam, spam, eggs, and spam</span><span class="s1">&#39;</span><span class="ss">)</span>
+    <span class="ss">)</span>
+    <span class="nv">table</span> <span class="o">=</span> <span class="nv">doc</span>.<span class="nv">add_table</span><span class="ss">(</span><span class="nv">rows</span><span class="o">=</span><span class="mi">1</span>, <span class="nv">cols</span><span class="o">=</span><span class="mi">3</span><span class="ss">)</span>
+    <span class="nv">table</span>.<span class="nv">style</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">LightShading-Accent1</span><span class="s1">&#39;</span>
+
+    <span class="nv">hdr_cells</span> <span class="o">=</span> <span class="nv">table</span>.<span class="nv">rows</span>[<span class="mi">0</span>].<span class="nv">cells</span>
+    <span class="nv">hdr_cells</span>[<span class="mi">0</span>].<span class="nv">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">Qty</span><span class="s1">&#39;</span>
+    <span class="nv">hdr_cells</span>[<span class="mi">1</span>].<span class="nv">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">Id</span><span class="s1">&#39;</span>
+    <span class="nv">hdr_cells</span>[<span class="mi">2</span>].<span class="nv">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">Desc</span><span class="s1">&#39;</span>
+    <span class="k">for</span> <span class="nv">qty</span>, <span class="nv">id</span>, <span class="nv">desc</span> <span class="nv">in</span> <span class="nv">records</span>:
+        <span class="nv">row_cells</span> <span class="o">=</span> <span class="nv">table</span>.<span class="nv">add_row</span><span class="ss">()</span>.<span class="nv">cells</span>
+        <span class="nv">row_cells</span>[<span class="mi">0</span>].<span class="nv">text</span> <span class="o">=</span> <span class="nv">str</span><span class="ss">(</span><span class="nv">qty</span><span class="ss">)</span>
+        <span class="nv">row_cells</span>[<span class="mi">1</span>].<span class="nv">text</span> <span class="o">=</span> <span class="nv">id</span>
+        <span class="nv">row_cells</span>[<span class="mi">2</span>].<span class="nv">text</span> <span class="o">=</span> <span class="nv">desc</span>
+    <span class="nv">doc</span>.<span class="nv">add_picture</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">xxx.png</span><span class="s2">&quot;</span>, <span class="nv">width</span><span class="o">=</span><span class="nv">Inches</span><span class="ss">(</span><span class="mi">6</span>.<span class="mi">0</span><span class="ss">))</span>
+    <span class="nv">doc</span>.<span class="nv">add_page_break</span><span class="ss">()</span>
+    <span class="nv">doc</span>.<span class="nv">save</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">xxx.docx</span><span class="s2">&quot;</span><span class="ss">)</span>
+</pre></div>
+
+
+<h4>参考资料</h4>
+<p><a href="https://python-docx.readthedocs.io/en/latest/">python-docx</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

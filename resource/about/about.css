@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+
+<style>
+	#container{
+		background-color:#FFF;
+		max-width:80%;
+		
+		height:auto;
+		margin:0 auto;
+		text-align:center;
+		
+		}
+	#header{
+		margin:10px auto;
+		position:relative;
+		text-align:center;
+		background-color:#FFF;
+		height:150px;
+		
+		}
+	#header img{
+		text-align:center;
+		max-height:100%;
+	    margin:auto;
+		vertical-align:central;
+		a
+		}
+	#menu{
+		margin:10px;
+		height:20px;
+		background-color:#FFF;
+		}
+	#menu a.part{
+		margin:10px;
+		width:200px;
+		height:auto;
+		background-color:#FFF;
+		}
+	#content{
+		margin:10px;
+		height:400px;
+		}
+	#content_left{
+		width:30%;
+		height:400px;
+		float:left;
+		background-color:#EEE;
+		}
+	#content_left img{
+	     height:400px;
+		}
+	#content_other{
+		width:70%;
+		height:400px;
+		float:center;
+		/*text-align:center;*/
+		background-color:#FFF;
+		}
+	#content_other table#tb{
+		margin:50px;
+		}
+	#tb th{
+   	   min-width:50px;
+		}
+	#forfun{
+		height:200px;
+		}
+		
+	#gungun{
+		margin-left:0px;
+		height:150px;}
+	#footer{
+		margin:10px;
+		height:40px;
+		background-color:#FFF;}
+	a.part{
+		font-family:"微软雅黑";
+		font-size:20px;
+		}
+</style>
+
