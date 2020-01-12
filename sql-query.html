@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>SQL Query</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/sql-query.html" rel="bookmark"
+           title="Permalink to SQL Query">SQL Query</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 12 January 2020 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-01-12T22:00:00+08:00">
+                Published: Sun 12 January 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <ul>
+<li>SQL查询语句执行顺序</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="k">SELECT</span>
+
+<span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="k">DISTINCT</span>
+
+<span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">FROM</span>
+
+<span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">JOIN</span>
+
+<span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">ON</span>
+
+<span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="k">WHERE</span>
+
+<span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">GROUP</span> <span class="k">BY</span>
+
+<span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">HAVING</span> 
+
+
+<span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span>
+
+<span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">LIMIT</span> <span class="p">[,</span> <span class="p">]</span> 
+
+<span class="err">说明：</span> <span class="n">HAVING类似WHERE</span><span class="err">，不同之处在于</span><span class="n">WHERE过滤行</span><span class="err">，</span><span class="n">HAVING过滤组</span>
+</pre></div>
+
+
+<ul>
+<li>MySQL中的SELECT语句文档：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">SELECT</span> 
+<span class="p">[</span><span class="n">ALL</span> <span class="o">|</span> <span class="n">DISTINCT</span> <span class="o">|</span> <span class="n">DISTINCTROW</span> <span class="p">]</span> 
+<span class="p">[</span><span class="n">HIGH_PRIORITY</span><span class="p">]</span> 
+<span class="p">[</span><span class="n">STRAIGHT_JOIN</span><span class="p">]</span> 
+<span class="p">[</span><span class="n">SQL_SMALL_RESULT</span><span class="p">]</span> <span class="p">[</span><span class="n">SQL_BIG_RESULT</span><span class="p">]</span> <span class="p">[</span><span class="n">SQL_BUFFER_RESULT</span><span class="p">]</span> 
+<span class="p">[</span><span class="n">SQL_CACHE</span> <span class="o">|</span> <span class="n">SQL_NO_CACHE</span><span class="p">]</span> <span class="p">[</span><span class="n">SQL_CALC_FOUND_ROWS</span><span class="p">]</span> 
+<span class="n">select_expr</span> <span class="p">[,</span> <span class="n">select_expr</span> <span class="p">...]</span> 
+<span class="p">[</span><span class="n">FROM</span> <span class="n">table_references</span> 
+<span class="p">[</span><span class="n">PARTITION</span> <span class="n">partition_list</span><span class="p">]</span> 
+<span class="p">[</span><span class="n">WHERE</span> <span class="n">where_condition</span><span class="p">]</span> 
+<span class="p">[</span><span class="n">GROUP</span> <span class="n">BY</span> <span class="p">{</span><span class="n">col_name</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="n">position</span><span class="p">}</span> 
+<span class="p">[</span><span class="n">ASC</span> <span class="o">|</span> <span class="n">DESC</span><span class="p">],</span> <span class="p">...</span> <span class="p">[</span><span class="n">WITH</span> <span class="n">ROLLUP</span><span class="p">]]</span> 
+<span class="p">[</span><span class="n">HAVING</span> <span class="n">where_condition</span><span class="p">]</span> 
+<span class="p">[</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="p">{</span><span class="n">col_name</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="n">position</span><span class="p">}</span> 
+<span class="p">[</span><span class="n">ASC</span> <span class="o">|</span> <span class="n">DESC</span><span class="p">],</span> <span class="p">...]</span> 
+<span class="p">[</span><span class="n">LIMIT</span> <span class="p">{[</span><span class="n">offset</span><span class="p">,]</span> <span class="n">row_count</span> <span class="o">|</span> <span class="n">row_count</span> <span class="n">OFFSET</span> <span class="n">offset</span><span class="p">}]</span> 
+<span class="p">[</span><span class="n">PROCEDURE</span> <span class="n">procedure_name</span><span class="p">(</span><span class="n">argument_list</span><span class="p">)]</span> 
+<span class="p">[</span><span class="n">INTO</span> <span class="n">OUTFILE</span> <span class="err">&#39;</span><span class="n">file_name</span><span class="err">&#39;</span> 
+<span class="p">[</span><span class="n">CHARACTER</span> <span class="n">SET</span> <span class="n">charset_name</span><span class="p">]</span> 
+<span class="n">export_options</span> 
+<span class="o">|</span> <span class="n">INTO</span> <span class="n">DUMPFILE</span> <span class="err">&#39;</span><span class="n">file_name</span><span class="err">&#39;</span> 
+<span class="o">|</span> <span class="n">INTO</span> <span class="n">var_name</span> <span class="p">[,</span> <span class="n">var_name</span><span class="p">]]</span> 
+<span class="p">[</span><span class="n">FOR</span> <span class="n">UPDATE</span> <span class="o">|</span> <span class="n">LOCK</span> <span class="n">IN</span> <span class="n">SHARE</span> <span class="n">MODE</span><span class="p">]]</span> 
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
