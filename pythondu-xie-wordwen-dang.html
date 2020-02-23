@@ -59,57 +59,57 @@ In <a href="/category/pa-chong.html">爬虫</a> &nbsp; :)
 <ul>
 <li>安装依赖包</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">docx</span>
+<div class="highlight"><pre><span></span>pip install python-docx
 </pre></div>
 
 
 <h4>read</h4>
-<div class="highlight"><pre><span></span>    <span class="n">doc</span> <span class="o">=</span> <span class="n">docx</span><span class="p">.</span><span class="n">Document</span><span class="p">(</span><span class="ss">&quot;xxx.docx&quot;</span><span class="p">)</span>
-    <span class="o">#</span> <span class="err">读取内容</span>
-    <span class="n">paras</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">paragraphs</span>
-    <span class="o">#</span> <span class="err">读取表格</span>
-    <span class="n">tables</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">tables</span>
+<div class="highlight"><pre><span></span>    doc = docx.Document(&quot;xxx.docx&quot;)
+    # 读取内容
+    paras = doc.paragraphs
+    # 读取表格
+    tables = doc.tables
 </pre></div>
 
 
 <h4>write</h4>
-<div class="highlight"><pre><span></span>    <span class="nv">doc</span> <span class="o">=</span> <span class="nv">Document</span><span class="ss">()</span>
-    <span class="nv">doc</span>.<span class="nv">add_heading</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Head 标题</span><span class="s2">&quot;</span>, <span class="mi">0</span><span class="ss">)</span>
-    <span class="nv">doc</span>.<span class="nv">add_heading</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">次级标题</span><span class="s2">&quot;</span>, <span class="mi">1</span><span class="ss">)</span>
-    <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">Intense quote</span><span class="s1">&#39;</span>, <span class="nv">style</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">Intense Quote</span><span class="s1">&#39;</span><span class="ss">)</span>
+<div class="highlight"><pre><span></span>    doc = Document()
+    doc.add_heading(&quot;Head 标题&quot;, 0)
+    doc.add_heading(&quot;次级标题&quot;, 1)
+    doc.add_paragraph(&#39;Intense quote&#39;, style=&#39;Intense Quote&#39;)
 
-    # <span class="nv">normal</span>
-    <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">paragraph-one</span><span class="s2">&quot;</span><span class="ss">)</span>
+    # normal
+    doc.add_paragraph(&quot;paragraph-one&quot;)
 
-    # <span class="nv">unordered</span>
-    <span class="nv">p</span> <span class="o">=</span> <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">paragraph-two</span><span class="s2">&quot;</span><span class="ss">)</span>
+    # unordered
+    p = doc.add_paragraph(&quot;paragraph-two&quot;)
 
-    <span class="nv">p</span>.<span class="nv">style</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">ListBullet</span><span class="s1">&#39;</span>
-    <span class="nv">p</span>.<span class="nv">add_run</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">content</span><span class="s1">&#39;</span><span class="ss">)</span>.<span class="nv">bold</span> <span class="o">=</span> <span class="nv">True</span>
+    p.style=&#39;ListBullet&#39;
+    p.add_run(&#39;content&#39;).bold = True
 
-    # <span class="nv">ordered</span>
-    <span class="nv">p2</span> <span class="o">=</span> <span class="nv">doc</span>.<span class="nv">add_paragraph</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">paragraph-three</span><span class="s2">&quot;</span>,  <span class="nv">style</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">ListNumber</span><span class="s1">&#39;</span><span class="ss">)</span>
+    # ordered
+    p2 = doc.add_paragraph(&quot;paragraph-three&quot;,  style=&#39;ListNumber&#39;)
 
-    <span class="nv">records</span> <span class="o">=</span> <span class="ss">(</span>
-    <span class="ss">(</span><span class="mi">3</span>, <span class="s1">&#39;</span><span class="s">101</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">Spam</span><span class="s1">&#39;</span><span class="ss">)</span>,
-    <span class="ss">(</span><span class="mi">7</span>, <span class="s1">&#39;</span><span class="s">422</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">Eggs</span><span class="s1">&#39;</span><span class="ss">)</span>,
-    <span class="ss">(</span><span class="mi">4</span>, <span class="s1">&#39;</span><span class="s">631</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">Spam, spam, eggs, and spam</span><span class="s1">&#39;</span><span class="ss">)</span>
-    <span class="ss">)</span>
-    <span class="nv">table</span> <span class="o">=</span> <span class="nv">doc</span>.<span class="nv">add_table</span><span class="ss">(</span><span class="nv">rows</span><span class="o">=</span><span class="mi">1</span>, <span class="nv">cols</span><span class="o">=</span><span class="mi">3</span><span class="ss">)</span>
-    <span class="nv">table</span>.<span class="nv">style</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">LightShading-Accent1</span><span class="s1">&#39;</span>
+    records = (
+    (3, &#39;101&#39;, &#39;Spam&#39;),
+    (7, &#39;422&#39;, &#39;Eggs&#39;),
+    (4, &#39;631&#39;, &#39;Spam, spam, eggs, and spam&#39;)
+    )
+    table = doc.add_table(rows=1, cols=3)
+    table.style = &#39;LightShading-Accent1&#39;
 
-    <span class="nv">hdr_cells</span> <span class="o">=</span> <span class="nv">table</span>.<span class="nv">rows</span>[<span class="mi">0</span>].<span class="nv">cells</span>
-    <span class="nv">hdr_cells</span>[<span class="mi">0</span>].<span class="nv">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">Qty</span><span class="s1">&#39;</span>
-    <span class="nv">hdr_cells</span>[<span class="mi">1</span>].<span class="nv">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">Id</span><span class="s1">&#39;</span>
-    <span class="nv">hdr_cells</span>[<span class="mi">2</span>].<span class="nv">text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">Desc</span><span class="s1">&#39;</span>
-    <span class="k">for</span> <span class="nv">qty</span>, <span class="nv">id</span>, <span class="nv">desc</span> <span class="nv">in</span> <span class="nv">records</span>:
-        <span class="nv">row_cells</span> <span class="o">=</span> <span class="nv">table</span>.<span class="nv">add_row</span><span class="ss">()</span>.<span class="nv">cells</span>
-        <span class="nv">row_cells</span>[<span class="mi">0</span>].<span class="nv">text</span> <span class="o">=</span> <span class="nv">str</span><span class="ss">(</span><span class="nv">qty</span><span class="ss">)</span>
-        <span class="nv">row_cells</span>[<span class="mi">1</span>].<span class="nv">text</span> <span class="o">=</span> <span class="nv">id</span>
-        <span class="nv">row_cells</span>[<span class="mi">2</span>].<span class="nv">text</span> <span class="o">=</span> <span class="nv">desc</span>
-    <span class="nv">doc</span>.<span class="nv">add_picture</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">xxx.png</span><span class="s2">&quot;</span>, <span class="nv">width</span><span class="o">=</span><span class="nv">Inches</span><span class="ss">(</span><span class="mi">6</span>.<span class="mi">0</span><span class="ss">))</span>
-    <span class="nv">doc</span>.<span class="nv">add_page_break</span><span class="ss">()</span>
-    <span class="nv">doc</span>.<span class="nv">save</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">xxx.docx</span><span class="s2">&quot;</span><span class="ss">)</span>
+    hdr_cells = table.rows[0].cells
+    hdr_cells[0].text = &#39;Qty&#39;
+    hdr_cells[1].text = &#39;Id&#39;
+    hdr_cells[2].text = &#39;Desc&#39;
+    for qty, id, desc in records:
+        row_cells = table.add_row().cells
+        row_cells[0].text = str(qty)
+        row_cells[1].text = id
+        row_cells[2].text = desc
+    doc.add_picture(&quot;xxx.png&quot;, width=Inches(6.0))
+    doc.add_page_break()
+    doc.save(&quot;xxx.docx&quot;)
 </pre></div>
 
 
