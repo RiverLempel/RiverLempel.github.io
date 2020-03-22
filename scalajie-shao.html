@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Scala介绍</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/scalajie-shao.html" rel="bookmark"
+           title="Permalink to Scala介绍">Scala介绍</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 22 March 2020 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-03-22T22:00:00+08:00">
+                Published: Sun 22 March 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>introduce</h2>
+<p>Scala是一种多范式编程语言，无缝集成了面向对象和函数式编程思想。目标是为了以一种更简洁、优雅、类型安全的方式表达通用编程模式。</p>
+<h4>features</h4>
+<ul>
+<li>object-oriented - 多继承
+    所有的值都是对象</li>
+<li>functional programming - 函数是一等对象</li>
+<li>static type - type reference 类型安全</li>
+<li>JVM &amp; javascript runtime - 可以和Java无缝集成
+    Scala调用Java库是无缝的，反过来的话就看情况了
+    性能弱于Java</li>
+<li>代码简洁
+    相对于Java的语法冗余（虽然现在有一些比如Lombok的插件）
+     easy，精简 - 对于新手不友好，可读性稍差
+    不容易理解和debug - 有java开发经验就很容易上手</li>
+<li>语法复杂, 学习曲线非常高 </li>
+</ul>
+<h2>配置开发环境</h2>
+<h4>IDE</h4>
+<div class="highlight"><pre><span></span>Scala plugin
+file -&amp;gt; new project -&amp;gt; Scala -&amp;gt; IDEA -&amp;gt; Create, Local (library, compiler, reflect)
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>object Hello extends App {
+  println(&quot;Hello, World!&quot;)
+}
+</pre></div>
+
+
+<h4>command line</h4>
+<div class="highlight"><pre><span></span>sbt - scala  build tool: compile, running, test scala
+cd empty-folder
+sbt new scala/hello-world.g8
+cd hello-world -&amp;gt; sbt -&amp;gt; ~run
+</pre></div>
+
+
+<h2>reference</h2>
+<p><a href="https://docs.scala-lang.org/tour/tour-of-scala.html">Scala Basic</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
