@@ -65,28 +65,28 @@ In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
 <p>代码实现（感觉不是很完美）</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>public class ThreadScheduleExample implements Runnable {
-    private int start = 0;
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">class</span> <span class="nv">ThreadScheduleExample</span> <span class="nv">implements</span> <span class="nv">Runnable</span> {
+    <span class="nv">private</span> <span class="nv">int</span> <span class="nv">start</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">;</span>
 
-    public static void main(String[] args) {
-        ThreadScheduleExample obj = new ThreadScheduleExample();
-        Thread thread1 = new Thread(obj);
-        Thread thread2 = new Thread(obj);
-        thread1.start();
-        thread2.start();
+    <span class="nv">public</span> <span class="nv">static</span> <span class="nv">void</span> <span class="nv">main</span><span class="ss">(</span><span class="nv">String</span>[] <span class="nv">args</span><span class="ss">)</span> {
+        <span class="nv">ThreadScheduleExample</span> <span class="nv">obj</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">ThreadScheduleExample</span><span class="ss">()</span><span class="c1">;</span>
+        <span class="nv">Thread</span> <span class="nv">thread1</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">Thread</span><span class="ss">(</span><span class="nv">obj</span><span class="ss">)</span><span class="c1">;</span>
+        <span class="nv">Thread</span> <span class="nv">thread2</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">Thread</span><span class="ss">(</span><span class="nv">obj</span><span class="ss">)</span><span class="c1">;</span>
+        <span class="nv">thread1</span>.<span class="nv">start</span><span class="ss">()</span><span class="c1">;</span>
+        <span class="nv">thread2</span>.<span class="nv">start</span><span class="ss">()</span><span class="c1">;</span>
     }
 
-    @Override
-    public void run() {
-        while (start &lt; 10) {
-            synchronized (this) {
-                this.notify();
-                System.out.println(Thread.currentThread().getName() + &quot;: &quot; + String.valueOf(start));
-                start += 1;
-                try {
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+    @<span class="nv">Override</span>
+    <span class="nv">public</span> <span class="nv">void</span> <span class="nv">run</span><span class="ss">()</span> {
+        <span class="k">while</span> <span class="ss">(</span><span class="nv">start</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="ss">)</span> {
+            <span class="nv">synchronized</span> <span class="ss">(</span><span class="nv">this</span><span class="ss">)</span> {
+                <span class="nv">this</span>.<span class="nv">notify</span><span class="ss">()</span><span class="c1">;</span>
+                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="nv">Thread</span>.<span class="nv">currentThread</span><span class="ss">()</span>.<span class="nv">getName</span><span class="ss">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="s">: </span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nv">String</span>.<span class="nv">valueOf</span><span class="ss">(</span><span class="nv">start</span><span class="ss">))</span><span class="c1">;</span>
+                <span class="nv">start</span> <span class="o">+=</span> <span class="mi">1</span><span class="c1">;</span>
+                <span class="nv">try</span> {
+                    <span class="nv">this</span>.<span class="k">wait</span><span class="ss">()</span><span class="c1">;</span>
+                } <span class="nv">catch</span> <span class="ss">(</span><span class="nv">InterruptedException</span> <span class="nv">e</span><span class="ss">)</span> {
+                    <span class="nv">e</span>.<span class="nv">printStackTrace</span><span class="ss">()</span><span class="c1">;</span>
                 }
             }
         }

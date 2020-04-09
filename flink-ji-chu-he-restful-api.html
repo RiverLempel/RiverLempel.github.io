@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Flink 基础和restful API</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li class="active"><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/flink-ji-chu-he-restful-api.html" rel="bookmark"
+           title="Permalink to Flink 基础和restful API">Flink 基础和restful API</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Thu 09 April 2020 &nbsp;
+In <a href="/category/da-shu-ju.html">大数据</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-04-09T22:00:00+08:00">
+                Published: Thu 09 April 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>introduction</h2>
+<p>分布式、流式处理平台
+有状态，可进行统计等操作
+特点：
+1.高吞吐（Throughput）
+2.低延迟（Latency）
+3.可扩展（Scalability）
+4.广泛部署（跨硬件平台）</p>
+<h4>处理流程</h4>
+<p>Data Source -&gt; map(Transformations), filter -&gt; Data Sink</p>
+<h4>concept</h4>
+<p>有向无环图(DAG) ： 务链的图形化表示，用它来描述流处理作业的拓扑 
+*  window tumbling windows (no overlap),</p>
+<ul>
+<li>
+<p>sliding windows (with overlap) </p>
+</li>
+<li>
+<p>session windows (punctuated by a gap of inactivity)(经过一段设置时间,无数据认为窗口完成)</p>
+</li>
+</ul>
+<h4>data type</h4>
+<p>数据集的类型（有界和无界）和执行模型的类型（批次与流式）</p>
+<p>Unbounded streams 无限数据集 DataStream API (no end) Bounded streams 有限数据集 DataSet API (可以简单地被视为无界数据集的特殊情况) Real-time streams Recorded streams</p>
+<h2>setup</h2>
+<p>Flink：1.4.2</p>
+<p>高可用集群需要zookeeper， hadoop
+单机不需要</p>
+<h4>run</h4>
+<div class="highlight"><pre><span></span><span class="n">windows</span><span class="o">:</span> <span class="n">double</span> <span class="n">click</span> <span class="n">flink</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">bin</span><span class="o">-</span><span class="n">scala_2</span><span class="o">.</span><span class="mi">11</span><span class="o">\</span><span class="n">flink</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">2</span><span class="o">\</span><span class="n">bin</span><span class="o">\</span><span class="n">start</span><span class="o">-</span><span class="n">local</span><span class="o">.</span><span class="na">bat</span>
+
+<span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8081</span>
+</pre></div>
+
+
+<h4>restful api</h4>
+<p>界面能够实现的所有操作基本上都可以用api实现：比如监控信息、操作jar和job等。</p>
+<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">config</span>
+
+<span class="o">/</span><span class="n">overview</span>
+
+<span class="o">/</span><span class="n">taskmanagers</span>
+
+<span class="o">/</span><span class="n">jobs</span>
+
+<span class="o">/</span><span class="n">jobs</span><span class="o">/#</span><span class="n">jobid</span><span class="o">#</span>
+
+<span class="o">/</span><span class="n">jars</span> <span class="o">-</span> <span class="n">jar</span> <span class="n">list</span>
+
+<span class="p">....</span>
+</pre></div>
+
+
+<h2>reference</h2>
+<p><a href="https://ci.apache.org/projects/flink/flink-docs-stable/monitoring/rest_api.html">flink rest api</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

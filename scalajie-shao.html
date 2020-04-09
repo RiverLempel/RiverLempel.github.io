@@ -74,22 +74,22 @@ In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
 </ul>
 <h2>配置开发环境</h2>
 <h4>IDE</h4>
-<div class="highlight"><pre><span></span>Scala plugin
-file -&amp;gt; new project -&amp;gt; Scala -&amp;gt; IDEA -&amp;gt; Create, Local (library, compiler, reflect)
+<div class="highlight"><pre><span></span><span class="n">Scala</span> <span class="n">plugin</span>
+<span class="n">file</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">project</span> <span class="o">-&gt;</span> <span class="n">Scala</span> <span class="o">-&gt;</span> <span class="n">IDEA</span> <span class="o">-&gt;</span> <span class="k">Create</span><span class="p">,</span> <span class="k">Local</span> <span class="p">(</span><span class="n">library</span><span class="p">,</span> <span class="n">compiler</span><span class="p">,</span> <span class="n">reflect</span><span class="p">)</span>
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>object Hello extends App {
-  println(&quot;Hello, World!&quot;)
-}
+<div class="highlight"><pre><span></span><span class="k">object</span> <span class="n">Hello</span> <span class="n">extends</span> <span class="n">App</span> <span class="err">{</span>
+  <span class="n">println</span><span class="p">(</span><span class="ss">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>command line</h4>
-<div class="highlight"><pre><span></span>sbt - scala  build tool: compile, running, test scala
-cd empty-folder
-sbt new scala/hello-world.g8
-cd hello-world -&amp;gt; sbt -&amp;gt; ~run
+<div class="highlight"><pre><span></span><span class="n">sbt</span> <span class="o">-</span> <span class="n">scala</span>  <span class="n">build</span> <span class="n">tool</span><span class="p">:</span> <span class="n">compile</span><span class="p">,</span> <span class="n">running</span><span class="p">,</span> <span class="n">test</span> <span class="n">scala</span>
+<span class="n">cd</span> <span class="n">empty</span><span class="o">-</span><span class="n">folder</span>
+<span class="n">sbt</span> <span class="k">new</span> <span class="n">scala</span><span class="o">/</span><span class="n">hello</span><span class="o">-</span><span class="n">world</span><span class="p">.</span><span class="n">g8</span>
+<span class="n">cd</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span> <span class="o">-&gt;</span> <span class="n">sbt</span> <span class="o">-&gt;</span> <span class="o">~</span><span class="n">run</span>
 </pre></div>
 
 

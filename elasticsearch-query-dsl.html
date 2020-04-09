@@ -58,23 +58,23 @@ In <a href="/category/da-shu-ju.html">大数据</a> &nbsp; :)
       <h2>query DSL</h2>
 <p>POST index-test/type-test/_search</p>
 <h4>keyword</h4>
-<div class="highlight"><pre><span></span>_search
-_update
-_bulk
-_mapping
-_delete_by_query
-还和请求类型有关 GET, PUT, DELETE, POST
+<div class="highlight"><pre><span></span><span class="n">_search</span>
+<span class="n">_update</span>
+<span class="n">_bulk</span>
+<span class="n">_mapping</span>
+<span class="n">_delete_by_query</span>
+<span class="err">还和请求类型有关</span> <span class="k">GET</span><span class="p">,</span> <span class="n">PUT</span><span class="p">,</span> <span class="k">DELETE</span><span class="p">,</span> <span class="n">POST</span>
 </pre></div>
 
 
 <h4>上下文</h4>
-<div class="highlight"><pre><span></span>查询上下文（score） vs 过滤上下文（是否）
-* queries vs filters
-    relevance(相关性) boolean
-    not cached cached
-    slow    faster
+<div class="highlight"><pre><span></span><span class="err">查询上下文（</span><span class="n">score</span><span class="err">）</span> <span class="n">vs</span> <span class="err">过滤上下文（是否）</span>
+<span class="o">*</span> <span class="n">queries</span> <span class="n">vs</span> <span class="n">filters</span>
+    <span class="n">relevance</span><span class="p">(</span><span class="err">相关性</span><span class="p">)</span> <span class="nb">boolean</span>
+    <span class="k">not</span> <span class="n">cached</span> <span class="n">cached</span>
+    <span class="n">slow</span>    <span class="n">faster</span>
 
-同一文档在不同query中的score没有可比性
+<span class="err">同一文档在不同</span><span class="n">query中的score没有可比性</span>
 </pre></div>
 
 
@@ -82,30 +82,30 @@ _delete_by_query
 <p>must :: 多个查询条件的完全匹配,相当于 and。
 must_not :: 多个查询条件的相反匹配，相当于 not。
 should :: 至少有一个查询条件匹配, 相当于 or。</p>
-<div class="highlight"><pre><span></span>{
- &quot;bool&quot;: {
-  &quot;must&quot;: {
-   &quot;term&quot;: {
-    &quot;folder&quot;: &quot;inbox&quot;
-   }
-  },
-  &quot;must_not&quot;: {
-   &quot;term&quot;: {
-    &quot;tag&quot;: &quot;spam&quot;
-   }
-  },
-  &quot;should&quot;: [{
-   &quot;term&quot;: {
-    &quot;starred&quot;: true
-   }
-  },
-  {
-   &quot;term&quot;: {
-    &quot;unread&quot;: true
-   }
-  }]
- }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+ <span class="ss">&quot;bool&quot;</span><span class="p">:</span> <span class="err">{</span>
+  <span class="ss">&quot;must&quot;</span><span class="p">:</span> <span class="err">{</span>
+   <span class="ss">&quot;term&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;folder&quot;</span><span class="p">:</span> <span class="ss">&quot;inbox&quot;</span>
+   <span class="err">}</span>
+  <span class="err">}</span><span class="p">,</span>
+  <span class="ss">&quot;must_not&quot;</span><span class="p">:</span> <span class="err">{</span>
+   <span class="ss">&quot;term&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;tag&quot;</span><span class="p">:</span> <span class="ss">&quot;spam&quot;</span>
+   <span class="err">}</span>
+  <span class="err">}</span><span class="p">,</span>
+  <span class="ss">&quot;should&quot;</span><span class="p">:</span> <span class="p">[</span><span class="err">{</span>
+   <span class="ss">&quot;term&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;starred&quot;</span><span class="p">:</span> <span class="k">true</span>
+   <span class="err">}</span>
+  <span class="err">}</span><span class="p">,</span>
+  <span class="err">{</span>
+   <span class="ss">&quot;term&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;unread&quot;</span><span class="p">:</span> <span class="k">true</span>
+   <span class="err">}</span>
+  <span class="err">}</span><span class="p">]</span>
+ <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -114,22 +114,22 @@ should :: 至少有一个查询条件匹配, 相当于 or。</p>
 <h4>match all</h4>
 <p>GET or POST index-test/type-test/_search
 如果使用GET，则默认是match_all</p>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;match_all&quot;</span><span class="p">:</span> <span class="err">{}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>match phrase</h4>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;match_phrase&quot;: {
-      &quot;age&quot;: 15
-    }
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;match_phrase&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;age&quot;</span><span class="p">:</span> <span class="mi">15</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -137,96 +137,96 @@ should :: 至少有一个查询条件匹配, 相当于 or。</p>
 <p>term主要用于精确匹配值，比如数字，日期，布尔值或 not_analyzed 的字符串(未经分析的文本数据类型， string默认analyzed)
 经过分析的文本类型无法精确匹配
 （暂时没有找到设置为not_analyzed的方法）</p>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;term&quot;: {
-      &quot;age&quot;: 15
-    }
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;term&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;age&quot;</span><span class="p">:</span> <span class="mi">15</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 
-{
-  &quot;query&quot;: {
-    &quot;terms&quot;: {
-      &quot;age&quot;: [15, 16]
-    }
-  }
-}
+<span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;terms&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;age&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>match</h4>
 <p>会对要匹配的内容进行分词</p>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;name&quot;: &quot;Sam1&quot;
-    }
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;match&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;name&quot;</span><span class="p">:</span> <span class="ss">&quot;Sam1&quot;</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>wildcard</h4>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;wildcard&quot;: {
-      &quot;name&quot;: &quot;Sam*&quot;
-    }
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;wildcard&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;name&quot;</span><span class="p">:</span> <span class="ss">&quot;Sam*&quot;</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>regexp</h4>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;regexp&quot;: {
-      &quot;name&quot;: &quot;Sam[0-9]&quot;
-    }
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;regexp&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;name&quot;</span><span class="p">:</span> <span class="ss">&quot;Sam[0-9]&quot;</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>exists</h4>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;exists&quot;: {
-      &quot;field&quot;: &quot;name&quot;
-    }
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;exists&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;field&quot;</span><span class="p">:</span> <span class="ss">&quot;name&quot;</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>range</h4>
 <p>POST index-test/type-test/_search</p>
-<div class="highlight"><pre><span></span>gt :: 大于
-gte:: 大于等于
-lt :: 小于
-lte:: 小于等于
+<div class="highlight"><pre><span></span><span class="n">gt</span> <span class="p">::</span> <span class="err">大于</span>
+<span class="n">gte</span><span class="p">::</span> <span class="err">大于等于</span>
+<span class="n">lt</span> <span class="p">::</span> <span class="err">小于</span>
+<span class="n">lte</span><span class="p">::</span> <span class="err">小于等于</span>
 
-{
-  &quot;query&quot;: {
-    &quot;range&quot;: {
-      &quot;age&quot;: {
-        &quot;gte&quot;: 14
-      }
-    }
-  }
-}
+<span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;range&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;age&quot;</span><span class="p">:</span> <span class="err">{</span>
+        <span class="ss">&quot;gte&quot;</span><span class="p">:</span> <span class="mi">14</span>
+      <span class="err">}</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4>prefix</h4>
-<div class="highlight"><pre><span></span>{
-  &quot;query&quot;: {
-    &quot;prefix&quot;: {
-      &quot;date&quot;: &quot;2020&quot;
-    }
-  }
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;query&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;prefix&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="ss">&quot;date&quot;</span><span class="p">:</span> <span class="ss">&quot;2020&quot;</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
     </div><!-- /.entry-content -->
 
