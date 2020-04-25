@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>windows commands</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/windows-commands.html" rel="bookmark"
+           title="Permalink to windows commands">windows commands</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sat 25 April 2020 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-04-25T22:00:00+08:00">
+                Published: Sat 25 April 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>introduce</h2>
+<p>have a set of Win32 console commands built in.</p>
+<p>The Command shell was the first shell built into Windows to automate routine tasks, like user account management or nightly backups, with batch (.bat) files.
+通过shell，你可以直接和OS或者application通信</p>
+<p>type:</p>
+<ul>
+<li>
+<p>command shell</p>
+</li>
+<li>
+<p>powershell cdmlets (扩展，推荐使用)</p>
+</li>
+</ul>
+<h2>commands</h2>
+<div class="highlight"><pre><span></span>:: 这是注释
+:: <span class="nv">file</span> <span class="nv">extension</span> <span class="s1">&#39;</span><span class="s">.cmd</span><span class="s1">&#39;</span> <span class="nv">or</span> <span class="s1">&#39;</span><span class="s">.bat</span><span class="s1">&#39;</span>
+
+:: <span class="nv">basic</span>
+<span class="nv">echo</span> <span class="s2">&quot;</span><span class="s">first line</span><span class="s2">&quot;</span>
+
+:: <span class="k">do</span> <span class="nv">not</span> <span class="k">show</span> <span class="nv">the</span> <span class="nv">command</span>
+@<span class="nv">echo</span> <span class="nv">off</span>
+<span class="nv">echo</span> <span class="s2">&quot;</span><span class="s">first line</span><span class="s2">&quot;</span>
+
+
+:: <span class="nv">variable</span>, <span class="nv">caution</span>: <span class="nv">no</span> <span class="nv">whitespace</span>
+:: <span class="nv">default</span> <span class="nv">global</span> <span class="nv">variable</span>
+<span class="nv">SET</span> <span class="nv">v1</span><span class="o">=</span><span class="nv">abc</span>
+
+<span class="nv">SETLOCAL</span> <span class="nv">localV1</span><span class="o">=</span><span class="nv">cde</span>
+
+<span class="nv">echo</span> <span class="o">%</span><span class="nv">v1</span><span class="o">%</span> 
+
+<span class="k">pause</span>
+</pre></div>
+
+
+<h2>reference</h2>
+<p><a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands">windows-commands doc</a></p>
+<p><a href="http://steve-jansen.github.io/guides/windows-batch-scripting/part-1-getting-started.html">windows-batch-scriping</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
