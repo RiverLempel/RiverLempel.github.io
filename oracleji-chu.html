@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Oracle基础</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/oracleji-chu.html" rel="bookmark"
+           title="Permalink to Oracle基础">Oracle基础</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 03 May 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-05-03T22:00:00+08:00">
+                Published: Sun 03 May 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h4>concepts</h4>
+<div class="highlight"><pre><span></span><span class="o">*</span> <span class="k">database</span>
+  <span class="n">A</span> <span class="k">database</span> <span class="k">is</span> <span class="n">a</span> <span class="k">set</span> <span class="k">of</span> <span class="n">files</span><span class="p">,</span> <span class="n">located</span> <span class="k">on</span> <span class="n">disk</span><span class="p">,</span> <span class="n">that</span> <span class="n">store</span> <span class="k">data</span><span class="p">.</span> <span class="n">These</span> <span class="n">files</span> <span class="n">can</span> <span class="n">exist</span> <span class="n">independently</span> <span class="k">of</span> <span class="n">a</span> <span class="k">database</span> <span class="n">instance</span><span class="p">.</span>
+<span class="o">*</span> <span class="k">database</span> <span class="n">instance</span> <span class="p">(</span><span class="err">对应</span><span class="n">mysql的database</span><span class="p">)</span>
+  <span class="n">An</span> <span class="n">instance</span> <span class="k">is</span> <span class="n">a</span> <span class="k">set</span> <span class="k">of</span> <span class="n">memory</span> <span class="n">structures</span> <span class="n">that</span> <span class="n">manage</span> <span class="k">database</span> <span class="n">files</span><span class="p">.</span> <span class="n">The</span> <span class="n">instance</span> <span class="n">consists</span> <span class="k">of</span> <span class="n">a</span> <span class="n">shared</span> <span class="n">memory</span> <span class="n">area</span><span class="p">,</span> <span class="k">called</span> <span class="n">the</span> <span class="k">system</span> <span class="k">global</span> <span class="n">area</span> <span class="p">(</span><span class="n">SGA</span><span class="p">),</span> <span class="k">and</span> <span class="n">a</span> <span class="k">set</span> <span class="k">of</span> <span class="n">background</span> <span class="n">processes</span><span class="p">.</span> <span class="n">An</span> <span class="n">instance</span> <span class="n">can</span> <span class="n">exist</span> <span class="n">independently</span> <span class="k">of</span> <span class="k">database</span> <span class="n">files</span><span class="p">.</span>
+    <span class="n">sid</span><span class="err">：</span> <span class="n">INSTANCE_NAME</span>
+    <span class="n">service</span> <span class="n">name</span><span class="p">:</span> <span class="n">SERVICE_NAMES</span><span class="err">，对外公布的名称，为网络监听服务</span>
+    <span class="n">sid用于实例区分各个数据库</span><span class="err">，</span><span class="n">service</span> <span class="n">name用于外部链接</span>
+<span class="o">*</span> <span class="k">user</span>
+  <span class="n">one</span> <span class="k">user</span> <span class="n">has</span> <span class="n">one</span> <span class="k">schema</span>
+  <span class="k">Each</span> <span class="n">client</span> <span class="n">process</span> <span class="k">is</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">its</span> <span class="n">own</span> <span class="n">server</span> <span class="n">process</span><span class="p">.</span> <span class="n">The</span> <span class="n">server</span> <span class="n">process</span> <span class="n">has</span> <span class="n">its</span> <span class="n">own</span> <span class="n">private</span> <span class="k">session</span> <span class="n">memory</span><span class="p">,</span> <span class="n">known</span> <span class="k">as</span> <span class="n">the</span> <span class="n">program</span> <span class="k">global</span> <span class="n">area</span> <span class="p">(</span><span class="n">PGA</span><span class="p">).</span>
+
+<span class="o">*</span> <span class="k">schema</span>
+<span class="k">database</span> <span class="n">metadata</span>
+<span class="k">schema</span> <span class="k">is</span> <span class="n">a</span> <span class="n">collection</span> <span class="k">of</span> <span class="n">logical</span> <span class="k">data</span> <span class="n">structures</span><span class="p">,</span> <span class="k">or</span> <span class="k">schema</span> <span class="n">objects</span><span class="p">(</span><span class="n">tables</span><span class="p">,</span> <span class="n">indexes</span><span class="p">,</span> <span class="n">views</span><span class="p">...)</span>
+<span class="err">可以理解为一个数据库名</span>
+</pre></div>
+
+
+<h4>startup oracle</h4>
+<div class="highlight"><pre><span></span><span class="k">start</span> <span class="n">oracle</span><span class="p">:</span>
+<span class="n">su</span> <span class="o">-</span> <span class="n">oracle</span> <span class="p">(</span><span class="n">login</span> <span class="n">shell</span><span class="p">)</span>
+<span class="n">sqlplus</span> <span class="o">/</span> <span class="k">as</span> <span class="n">sysdba</span>
+<span class="n">startup</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>reference</h2>
+<p><a href="https://docs.oracle.com/database/121/CNCPT/sqllangu.htm#CNCPT88916">offical document</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
