@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>database lock</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/database-lock.html" rel="bookmark"
+           title="Permalink to database lock">database lock</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 10 May 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-05-10T22:00:00+08:00">
+                Published: Sun 10 May 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h4>transaction</h4>
+<p>事务 - 最小逻辑工作单位。事务不能嵌套</p>
+<ul>
+<li>ACID （important）</li>
+</ul>
+<div class="highlight"><pre><span></span>    <span class="n">consistency</span> <span class="err">一致性</span> <span class="o">-</span> <span class="n">DB只包含成功提交的事务的结构</span><span class="err">。事务在执行前后都保持一致性状态，在一致性状态下，所有事务对一个数据的读取结果都是相同的；（</span><span class="n">most</span> <span class="n">important</span><span class="err">，只有满足一致性，事务的执行结果才是正确的）</span>
+    <span class="n">atomicity</span> <span class="err">原子性</span> <span class="o">-</span> <span class="err">事务中含有的许多操作，要么都做，要么都不做（失败回滚）。</span>
+    <span class="k">isolation</span> <span class="err">隔离性</span> <span class="o">-</span> <span class="err">事务所做的修改在最终提交以前，对其他事务是不可见的</span> <span class="err">。在并发中，在未成功提交前，其他事务不可见。</span>
+    <span class="n">durability</span> <span class="err">持久性</span> <span class="o">-</span> <span class="err">一旦成功提交的事务，操作永久有效</span><span class="p">,</span> <span class="err">即使系统发生崩溃，事务执行的结果也不会丢失。应对</span><span class="n">DB崩溃情况</span><span class="err">。</span>
+    <span class="err">串行化可以解决所有问题，但是性能不足。</span>
+    <span class="err">串行：满足原子性</span> <span class="o">-&gt;</span> <span class="err">一致性</span>
+    <span class="err">并发：</span> <span class="err">满足原子性、隔离性</span> <span class="o">-&gt;</span> <span class="err">一致性</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="nl">MySQL</span><span class="p">:</span><span class="w"></span>
+<span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">BEGIN</span><span class="w"> </span><span class="o">[</span><span class="n">WORK</span><span class="o">]</span><span class="w"></span>
+<span class="k">COMMIT</span><span class="w"> </span><span class="o">[</span><span class="n">WORK</span><span class="o">]</span><span class="w"></span>
+<span class="k">ROLLBACK</span><span class="w"> </span><span class="o">[</span><span class="n">WORK</span><span class="o">]</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="n">autocommit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="mi">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"></span>
+
+<span class="n">默认自动提交</span><span class="err">，</span><span class="n">每一个语句为一个事务</span><span class="w"></span>
+</pre></div>
+
+
+<h4>并发一致性问题</h4>
+<ul>
+<li>丢失修改 - 多个修改 （X）</li>
+<li>读脏数据 - 修改后撤销了 （S， X）</li>
+<li>不可重复读 - update  （S， X）</li>
+<li>幻读 - insert，delete （串行化）</li>
+</ul>
+<h4>事务的隔离级别</h4>
+<ul>
+<li>read uncommitted - do nothing</li>
+<li>read committed</li>
+<li>repeated read</li>
+<li>serialization</li>
+</ul>
+<h4>lock</h4>
+<ul>
+<li>
+<p>三级封锁</p>
+</li>
+<li>
+<p>两段锁协议（遵守两段锁协议的事务可能发生死锁）：扩展和收缩阶段</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">事务遵循两段锁协议是保证可串行化调度的充分条件</span>
+<span class="err">并发调度的可串行性：</span> <span class="err">与某一次串行执行的结果相同</span>
+<span class="err">并发控制技术</span>
+<span class="err">个事务的失败可能会引起一连串事务的回滚</span>
+</pre></div>
+
+
+<ul>
+<li>一次封锁法
+    遵循两段锁协议，同时将所要使用的资源，一次性全部加锁。可以避免死锁。</li>
+<li>type</li>
+</ul>
+<div class="highlight"><pre><span></span>    <span class="err">共享锁（</span><span class="n">S锁</span><span class="err">，读锁）</span> <span class="o">-</span> <span class="err">可加</span><span class="n">S</span> <span class="k">lock</span>
+    <span class="err">排他锁（</span><span class="n">X锁</span><span class="err">，写锁）</span> <span class="o">-</span> <span class="err">不可</span><span class="n">S</span><span class="err">，</span><span class="n">X锁</span>
+    <span class="err">意向锁（表锁</span> <span class="k">IS</span><span class="err">，</span> <span class="n">IX</span><span class="err">）</span> <span class="o">-</span><span class="err">更容易地支持多粒度封锁</span><span class="p">.</span>  <span class="k">IS</span> <span class="k">or</span> <span class="n">IX</span> <span class="o">-&gt;</span> <span class="n">S</span><span class="p">;</span> <span class="n">IX</span> <span class="o">-&gt;</span> <span class="n">X</span>
+    <span class="err">悲观锁</span> <span class="o">-</span> <span class="err">保守态度，依靠数据库提供的锁机制（</span><span class="n">S</span><span class="err">，</span> <span class="n">X</span><span class="err">）</span>
+    <span class="err">乐观锁</span> <span class="o">-</span> <span class="err">只会对数据进行提交更新的时候，才会正式对数据的冲突与否进行检测</span>
+    <span class="err">​</span>    <span class="err">版本号（数据更新</span> <span class="k">version</span><span class="o">+</span><span class="mi">1</span><span class="p">.</span> <span class="k">version</span><span class="o">-</span><span class="k">read</span> <span class="o">==</span> <span class="k">version</span><span class="o">-</span><span class="k">update</span> <span class="o">?</span> <span class="k">or</span> <span class="k">not</span><span class="err">）</span>
+    <span class="err">​</span>    <span class="err">时间戳（数据更新时间）</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>活锁和死锁</p>
+</li>
+<li>
+<p>封锁的粒度</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>    <span class="err">封锁的粒度越小，锁定的数据量越少，发生锁争用的可能就越小，并发程度越高；</span>
+    <span class="err">封锁的粒度越小，系统开销越大</span>
+    <span class="err">行级锁</span> <span class="n">vs</span> <span class="err">表级锁</span>
+</pre></div>
+
+
+<h2>reference</h2>
+<p><a href="https://blog.csdn.net/wei_cheng18/article/details/82955068">transanction &amp; lock</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
