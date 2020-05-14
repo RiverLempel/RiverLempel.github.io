@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>mysql index</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/mysql-index.html" rel="bookmark"
+           title="Permalink to mysql index">mysql index</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Thu 14 May 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-05-14T22:00:00+08:00">
+                Published: Thu 14 May 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h4>索引</h4>
+<p>index</p>
+<p>一般读多写少，索引是为了加快查询速度</p>
+<p>不断地缩小想要获取数据的范围来筛选出最终想要的结果，同时把随机的事件变成顺序的事件</p>
+<p>访问磁盘的成本大概是访问内存的十万倍左右</p>
+<p>寻道时间、旋转延迟、传输时间(可以忽略不计)</p>
+<p>局部预读性原理</p>
+<p>二叉树 -&gt; 平衡二叉树 -&gt; B tree -&gt; B+ tree</p>
+<ul>
+<li>linear: O(N)</li>
+<li>binary search tree: O(logN)</li>
+<li>hash: only suitable for single value search</li>
+<li>二叉树、红黑树: 逻辑上很近的节点（父子）物理上可能很远</li>
+</ul>
+<p>MySQL B+ tree: 增加了顺序访问指针，高了区间访问性能，极大提到了区间查询效率(无需返回上层父节点重复遍历查找减少IO操作)。</p>
+<p>索引很大，需要存储到磁盘
+一个B+Tree节点大小设为一个页大小</p>
+<p>primary key, unique, index</p>
+<p>索引类型(不同存储引擎支持不同):
+ hash - 单条快
+ b tree - innodb default</p>
+<ul>
+<li>
+<p>聚集索引（clustered index） - InnoDB
+ 索引和数据放于同一个文件
+ 包含记录的全部数据，双向链表
+ 有利于范围查询
+ ckey-data
+ 每张表一个</p>
+</li>
+<li>
+<p>辅助索引（secondary index）（非聚集索引） - MyISAM
+ skey-bookmark(ckey, 相应行数据的聚集索引键)</p>
+</li>
+</ul>
+<h4>method</h4>
+<p>根据检索条件创建索引
+ 索引也不宜过多，占存储空间，影响性能
+ 优化sql，缩小检索范围</p>
+<h4>MyISAM</h4>
+<p>采用非聚簇索引-MyISAM myi索引文件和myd数据文件分离，索引文件仅保存数据记录的指针地址
+rm -表定义、 myi -myisam索引、 myd-myisam数据</p>
+<h4>InnoDB</h4>
+<ul>
+<li>support transaction</li>
+<li>high extensibility</li>
+<li>redo/undo</li>
+<li>行级别锁
+＊page cache LRU
+要求表必须有pk，未指定mysql会自动选择一个可以唯一表示数据记录的列作为主键，如果不存在这样的列，mysql自动为InnoDB表生成一个隐含字段(6个字节长整型)作为主键</li>
+</ul>
+<p>之上有二级索引（非聚簇索引），需要二次查找，加快速度
+比如像复合索引、前缀索引、唯一索引，辅助索引叶子节点存储的不再是行的物理位置，而是主键值</p>
+<p>查询条件中为非主键时就需要二级索引</p>
+<h2>maintain index cost</h2>
+<ul>
+<li>insert new line</li>
+<li>page split
+使用UUID（random id）可能导致index效率低于 full table scan。建议使用auto_increment。</li>
+</ul>
+<p>最大填充因子：页大小的 15/16，留出部分空间用于以后修改</p>
+<h2>选择</h2>
+<p>单次来看聚簇索引效率低，但是由于数据的相关性和提前加载。所以总的来说性能更高。</p>
+<p>聚簇索引适合用在排序的场合，非聚簇索引不适合</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>cluster index</th>
+<th>non clustern index</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ordering</td>
+<td>yes</td>
+<td>not suitable</td>
+</tr>
+<tr>
+<td>range</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2>reference</h2>
+<p><a href="https://www.cnblogs.com/Eva-J/articles/10126413.html">索引介绍</a></p>
+<p><a href="https://www.jianshu.com/p/486a514b0ded">B+ tree</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
