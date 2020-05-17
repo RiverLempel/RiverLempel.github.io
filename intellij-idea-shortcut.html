@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>IntelliJ IDEA shortcut</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/intellij-idea-shortcut.html" rel="bookmark"
+           title="Permalink to IntelliJ IDEA shortcut">IntelliJ IDEA shortcut</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 17 May 2020 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-05-17T22:00:00+08:00">
+                Published: Sun 17 May 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>常用快捷键</h2>
+<div class="highlight"><pre><span></span>  <span class="n">double</span> <span class="n">shift</span> <span class="o">//</span> <span class="n">find</span> <span class="n">files</span>
+  <span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span> <span class="o">//</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">enter</span> <span class="err">导入缺失的</span><span class="n">package</span>
+  <span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="p">;</span>
+  <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span> <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">O</span> <span class="err">删除没有使用的</span><span class="n">package</span>
+
+  <span class="n">public</span> <span class="k">class</span> <span class="nc">InteliJ_IEDA_Shortcuts</span> <span class="p">{</span>
+      <span class="o">//</span> <span class="n">psvm</span> <span class="o">+</span> <span class="n">Tab</span> <span class="p">(</span><span class="n">main</span> <span class="n">method</span><span class="p">)</span>
+      <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+          <span class="o">//</span> <span class="n">fori</span> <span class="o">+</span> <span class="n">Tab</span> <span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+          <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+              <span class="o">//</span> <span class="n">sout</span> <span class="o">+</span> <span class="n">Tab</span> <span class="p">(</span><span class="k">print</span><span class="p">)</span>
+              <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Z</span> <span class="err">倒退</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Shift</span> <span class="o">+</span> <span class="n">Z</span> <span class="n">redo</span>
+              <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;ss&quot;</span><span class="p">);</span>
+              <span class="o">//</span> <span class="n">Shift</span> <span class="o">+</span> <span class="n">enter</span> <span class="n">new</span><span class="o">-</span><span class="n">line</span>
+              <span class="o">//</span> <span class="n">new</span> <span class="n">String</span><span class="p">()</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">v</span> <span class="err">自动引入变量</span>
+              <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">new</span> <span class="n">String</span><span class="p">();</span>
+
+  <span class="o">//</span> <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">();</span> <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">X</span> <span class="n">delete</span><span class="o">-</span><span class="n">lines</span>
+              <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">();</span> <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">D</span> <span class="n">copy</span><span class="o">-</span><span class="n">lines</span>
+
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">T</span> <span class="p">(</span><span class="n">surround</span> <span class="k">with</span><span class="p">)</span>
+              <span class="k">try</span> <span class="p">{</span>
+                  <span class="n">File</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+              <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+              <span class="p">}</span>
+  <span class="o">//</span> <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Date</span><span class="p">();</span>
+              <span class="n">File</span> <span class="n">cca</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">P</span> <span class="n">method</span> <span class="n">parameter</span> <span class="n">hint</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Q</span> <span class="err">方法声明</span> <span class="n">document</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Shift</span> <span class="o">+</span> <span class="n">Backspace</span> <span class="err">跳转到上次编辑的地方</span>
+
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">N</span> <span class="n">Search</span> <span class="n">Class</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Shift</span> <span class="o">+</span> <span class="n">N</span> <span class="n">Search</span> <span class="n">File</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">G</span> <span class="n">location</span><span class="p">(</span><span class="n">rows</span><span class="p">:</span><span class="n">columns</span><span class="p">)</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">F</span> <span class="n">Find</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">current</span><span class="o">-</span><span class="n">window</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Shift</span> <span class="o">+</span> <span class="n">F</span> <span class="n">find</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">given</span><span class="o">-</span><span class="n">window</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">R</span> <span class="o">...</span> <span class="n">replace</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Shift</span> <span class="o">+</span> <span class="n">R</span> <span class="o">...</span>
+
+              <span class="o">//</span> <span class="n">Alt</span> <span class="o">+</span> <span class="o">/</span> <span class="err">代码自动补全</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">J</span> <span class="err">自动代码提示</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">space</span> <span class="err">代码提示</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">L</span> <span class="n">code</span> <span class="n">format</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">space</span> <span class="n">class</span><span class="o">-</span><span class="n">name</span> <span class="ow">or</span> <span class="n">interface</span><span class="o">-</span><span class="n">name</span> <span class="n">hint</span>
+              <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">E</span> <span class="err">最近更改的代码</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="n">public</span> <span class="n">String</span> <span class="n">getName</span><span class="p">()</span> <span class="p">{</span>
+          <span class="o">//</span> <span class="n">STRING</span> <span class="n">cc</span><span class="p">;</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Shift</span> <span class="o">+</span> <span class="n">U</span> <span class="err">大小写转换</span>
+          <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+          <span class="o">//</span> <span class="n">F4</span> <span class="n">find</span><span class="o">-</span><span class="n">the</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">variable</span>
+
+      <span class="p">}</span>
+
+      <span class="n">public</span> <span class="n">void</span> <span class="n">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">this</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="n">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span> <span class="o">//</span> <span class="n">Atl</span> <span class="o">+</span> <span class="n">Insert</span> <span class="p">(</span><span class="o">=</span><span class="err">右键，</span><span class="n">generate</span><span class="err">；</span> <span class="n">getter</span><span class="p">,</span> <span class="n">setter</span><span class="p">)</span>
+
+      <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">O</span> <span class="n">override</span> <span class="n">method</span>
+      <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">I</span> <span class="n">implement</span> <span class="n">method</span>
+      <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">H</span> <span class="n">show</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">diagram</span>
+      <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="o">~</span> <span class="err">切换</span><span class="n">style</span>
+      <span class="o">//</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">F7</span> <span class="err">被引用的地方</span>
+      <span class="o">//</span> <span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">F7</span> <span class="o">...</span>
+
+  <span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
