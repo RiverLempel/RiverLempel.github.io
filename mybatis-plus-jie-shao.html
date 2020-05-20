@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>MyBatis-Plus 介绍</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/mybatis-plus-jie-shao.html" rel="bookmark"
+           title="Permalink to MyBatis-Plus 介绍">MyBatis-Plus 介绍</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Wed 20 May 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-05-20T22:00:00+08:00">
+                Published: Wed 20 May 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>basic</h2>
+<p>MyBatis Plus (MP)</p>
+<p>在mybatis基础上做了增强，更简单易用，提升开发效率</p>
+<p>mp只是帮你注入了常用crud到mybatis里 注入之前可以说是动态的(根据你entity的字段以及注解变化而变化),但是注入之后是静态的</p>
+<p>feature:</p>
+<div class="highlight"><pre><span></span><span class="o">*</span> <span class="err">无侵入：只做了增强，未做改变</span>
+<span class="o">*</span> <span class="err">启动即会自动注入基本</span> <span class="n">CURD</span><span class="err">，性能基本无损耗，直接面向对象操作</span>
+<span class="o">*</span> <span class="n">CURD</span><span class="err">：内置通用</span> <span class="n">Mapper</span><span class="err">、通用</span> <span class="n">Service</span><span class="err">，仅仅通过少量配置即可实现单表大部分</span> <span class="n">CRUD</span> <span class="err">操作，更有强大的条件构造器，满足各类使用需求</span>
+<span class="o">*</span> <span class="err">内置分页</span>
+<span class="o">*</span> <span class="err">支持多种数据库</span>
+</pre></div>
+
+
+<h2>code</h2>
+<ul>
+<li>BaseMapper</li>
+<li>IService</li>
+</ul>
+<h2>annotation</h2>
+<div class="highlight"><pre><span></span><span class="nv">@MapperScan</span><span class="w"></span>
+<span class="n">xxxMapper</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">BaseMapper</span><span class="o">&lt;</span><span class="n">xxModel</span><span class="o">&gt;</span><span class="w"></span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">常用注解</span><span class="w"></span>
+<span class="nv">@TableName</span><span class="w"></span>
+
+<span class="nv">@TableId</span><span class="w"></span>
+<span class="nv">@TableField</span><span class="w"></span>
+<span class="nv">@EnumValue</span><span class="w"></span>
+<span class="nv">@Version</span><span class="err">:</span><span class="w"> </span><span class="n">乐观锁注解</span><span class="w"></span>
+<span class="nv">@TableLogic</span><span class="w"></span>
+<span class="nv">@KeySequence</span><span class="w"></span>
+<span class="nv">@SqlParser</span><span class="w"></span>
+</pre></div>
+
+
+<h2>heart function</h2>
+<ul>
+<li>代码生成器： AutoGenerator </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.baomidou<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mybatis-plus-generator<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>3.3.1.tmp<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>CURD</li>
+</ul>
+<p>Service CURD: IService</p>
+<div class="highlight"><pre><span></span>    <span class="n">save</span>
+    <span class="n">saveOrUpdate</span>
+    <span class="n">remove</span>
+    <span class="k">update</span>
+    <span class="k">get</span>    
+    <span class="n">list</span>
+    <span class="n">page</span>
+    <span class="k">count</span>
+    <span class="k">chain</span>
+</pre></div>
+
+
+<p>Mapper CURD: BaseMapper</p>
+<div class="highlight"><pre><span></span>    <span class="k">insert</span>
+    <span class="k">update</span>
+    <span class="k">select</span>
+</pre></div>
+
+
+<p>Mapper层选装件</p>
+<ul>
+<li>条件构造器</li>
+</ul>
+<div class="highlight"><pre><span></span>    <span class="n">wrapper</span> <span class="err">很重</span>
+    <span class="err">维护很麻烦</span>
+<span class="o">*</span> <span class="n">AbstractWrapper</span>
+    <span class="n">allEq</span>
+    <span class="n">eq</span>
+    <span class="n">ne</span>
+    <span class="n">gt</span><span class="p">,</span> <span class="n">ge</span><span class="p">,</span> <span class="n">lt</span><span class="p">,</span> <span class="n">le</span>
+    <span class="k">between</span><span class="p">,</span> <span class="n">notBetween</span>
+    <span class="k">like</span><span class="p">,</span> <span class="n">notLike</span><span class="p">,</span> <span class="n">likeLeft</span><span class="p">,</span><span class="n">likeRight</span>
+    <span class="k">isNull</span><span class="p">,</span> <span class="n">isNotNull</span>
+    <span class="p">...</span>
+<span class="o">*</span> <span class="n">UpdateWrapper</span>
+</pre></div>
+
+
+<ul>
+<li>分页插件</li>
+<li>Sequence主键</li>
+<li>自定义ID生成器：默认使用雪花算法+UUID</li>
+</ul>
+<h2>插件扩展</h2>
+<ul>
+<li>MybatisX 快速开发插件</li>
+<li>Sql 注入器</li>
+<li>性能分析</li>
+</ul>
+<h2>reference</h2>
+<p><a href="https://github.com/baomidou/mybatis-plus">mybatis-doc</a></p>
+<p><a href="https://mybatis.plus/guide/faq.html#%E5%A6%82%E4%BD%95%E6%8E%92%E9%99%A4%E9%9D%9E%E8%A1%A8%E4%B8%AD%E5%AD%97%E6%AE%B5%EF%BC%9F">mybatis-plus Q&amp;A</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
