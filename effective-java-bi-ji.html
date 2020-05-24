@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>effective java 笔记</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/effective-java-bi-ji.html" rel="bookmark"
+           title="Permalink to effective java 笔记">effective java 笔记</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 24 May 2020 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-05-24T22:00:00+08:00">
+                Published: Sun 24 May 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>part one</h2>
+<h4>必要时，进行保护性拷贝</h4>
+<p>引用的不当使用可能会导致很多不容易发现的bug</p>
+<h4>String</h4>
+<ul>
+<li>concat operation
+    避免在循环中使用‘+’来连接字符串，因为string为不可变类，使用‘+’，实际上是创建了新的对象
+    使用StringBuilder来代替String</li>
+<li>type
+    String不适合代替其他类型。可以明确的类型尽量使用其他类型，而不是一味使用String（尽管String很通用） </li>
+</ul>
+<h4>最小化可变性</h4>
+<p>可变类对象增加了复杂度和出错可能性</p>
+<p>不可变对象： </p>
+<div class="highlight"><pre><span></span><span class="err">​</span>    <span class="err">比较简单，易于设计、实现和使用，不容易出错，更加</span><span class="n">safe</span>
+<span class="err">​</span>    <span class="err">在对象生命周期内固定不变，本质上线程安全，无需同步操作</span>
+<span class="err">​</span>    <span class="err">只有在特殊的极端情况下会导致性能问题（为不同的值创建不同的对象）</span>
+<span class="err">​</span>    <span class="err">声明所有域为私有的</span>
+<span class="err">​</span>    <span class="err">不提供任何修改对象的方法（</span><span class="n">setter</span><span class="err">），私有化构造器（有点类似于</span><span class="n">singleton的一种处理方式</span><span class="err">），提供静态方法</span>
+<span class="err">​</span>    <span class="err">保证类不会被扩展（</span><span class="k">final</span><span class="err">）</span>
+</pre></div>
+
+
+<h4>使用标准类库</h4>
+<ul>
+<li>
+<p>省时省力，更加专注于应用程序的开发，而不是底层工作。
+你做的工作越是常见，就越可能找到类库，直接调用。</p>
+</li>
+<li>
+<p>安全、高效
+经过广泛的测试和应用，性能比较高，缺陷也比较少
+站在巨人肩膀上</p>
+</li>
+<li>
+<p>学习的典范
+类库是最好的学习例子，多用类库，可以融入主流，更容易和别人交流
+了解新版本的feature，做到知道，然后才是使用</p>
+</li>
+<li>
+<p>熟悉常用类库，成为工具箱中的必备</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nv">java</span>.<span class="nv">lang</span>
+<span class="nv">java</span>.<span class="nv">util</span>
+<span class="nv">java</span>.<span class="nv">io</span>
+<span class="nv">java</span>.<span class="nv">util</span>.<span class="nv">concurrent</span>
+第三方类库： <span class="nv">Guava</span> <span class="ss">(</span><span class="nv">google</span><span class="ss">)</span>
+<span class="nv">rt</span>.<span class="nv">java</span> <span class="o">-</span> <span class="nv">java</span> <span class="nv">source</span> <span class="nv">code</span>
+
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">lang</span> <span class="ss">(</span><span class="nv">important</span><span class="ss">)</span>
+    基础类，<span class="nv">fundamental</span> <span class="nv">of</span> <span class="nv">java</span>
+    反射、注解、引用等
+    <span class="nv">Object</span>, <span class="nv">which</span> <span class="nv">is</span> <span class="nv">the</span> <span class="nv">root</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">class</span> <span class="nv">hierarchy</span>, <span class="nv">and</span> <span class="nv">Class</span>, <span class="nv">instances</span> <span class="nv">of</span> <span class="nv">which</span> <span class="nv">represent</span> <span class="nv">classes</span> <span class="nv">at</span> <span class="nv">run</span> <span class="nv">time</span>
+    <span class="nv">wrapper</span> <span class="nv">classes</span> <span class="nv">Boolean</span>, <span class="nv">Character</span>, <span class="nv">Integer</span>, <span class="nv">Long</span>, <span class="nv">Float</span>, <span class="nv">and</span> <span class="nv">Double</span>
+    <span class="nv">Math</span> 
+    <span class="nv">String</span>, <span class="nv">StringBuffer</span>, <span class="nv">and</span> <span class="nv">StringBuilder</span>
+    <span class="nv">ClassLoader</span>, <span class="nv">Process</span>, <span class="nv">ProcessBuilder</span>, <span class="nv">Runtime</span>, <span class="nv">SecurityManager</span>, <span class="nv">and</span> <span class="nv">System</span> 
+    <span class="nv">Throwable</span>
+
+
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">util</span>
+    <span class="nv">collections</span> <span class="nv">framework</span>, <span class="nv">legacy</span> <span class="nv">collection</span> <span class="nv">classes</span>, <span class="nv">event</span> <span class="nv">model</span>, <span class="nv">date</span> <span class="nv">and</span> <span class="nv">time</span> <span class="nv">facilities</span>, <span class="nv">internationalization</span>, <span class="nv">and</span> <span class="nv">miscellaneous</span> <span class="nv">utility</span> <span class="nv">classes</span> <span class="ss">(</span><span class="nv">a</span> <span class="nv">string</span> <span class="nv">tokenizer</span>, <span class="nv">a</span> <span class="k">random</span><span class="o">-</span><span class="nv">number</span> <span class="nv">generator</span>, <span class="nv">and</span> <span class="nv">a</span> <span class="nv">bit</span> <span class="nv">array</span><span class="ss">)</span>.
+    <span class="nv">List</span>, <span class="nv">Set</span>, <span class="nv">Map</span>, <span class="nv">Collection</span>, <span class="nv">Deque</span>
+    <span class="nv">Arrays</span>, <span class="nv">Regex</span>, <span class="nv">Date</span>, <span class="nv">Calendar</span>
+    <span class="nv">LocalDateTime</span><span class="ss">(</span><span class="nv">java</span>.<span class="nv">time</span><span class="ss">)</span>
+
+
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">util</span>.<span class="nv">concurrent</span> <span class="ss">(</span><span class="nv">important</span><span class="ss">)</span>
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">util</span>.<span class="nv">concurrent</span>.<span class="nv">atomic</span>
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">util</span>.<span class="nv">concurrent</span>.<span class="nv">locks</span>
+    <span class="nv">concurrent</span> <span class="nv">programming</span>
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">util</span>.<span class="nv">function</span>
+    <span class="nv">lambda</span> <span class="nv">expressions</span> <span class="nv">and</span> <span class="nv">method</span> <span class="nv">references</span>
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">util</span>.<span class="nv">stream</span>
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">io</span>
+    <span class="nv">system</span> <span class="nv">input</span> <span class="nv">and</span> <span class="nv">output</span> <span class="nv">through</span> <span class="nv">data</span> <span class="nv">streams</span>, <span class="nv">serialization</span> <span class="nv">and</span> <span class="nv">the</span> <span class="nv">file</span> <span class="nv">system</span>
+    <span class="nv">passing</span> <span class="nv">a</span> <span class="nv">null</span> <span class="nv">argument</span> <span class="nv">to</span> <span class="nv">a</span> <span class="nv">constructor</span> <span class="nv">or</span> <span class="nv">method</span> <span class="nv">in</span> <span class="nv">any</span> <span class="nv">class</span> <span class="nv">or</span> <span class="nv">interface</span> <span class="nv">in</span> <span class="nv">this</span> <span class="nv">package</span> <span class="nv">will</span> <span class="nv">cause</span> <span class="nv">a</span> <span class="nv">NullPointerException</span> <span class="nv">to</span> <span class="nv">be</span> <span class="nv">thrown</span>.
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">nio</span>
+
+<span class="o">*</span> <span class="nv">java</span>.<span class="nv">math</span>
+    <span class="nv">BigDecimal</span>
+    <span class="nv">BigInteger</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
