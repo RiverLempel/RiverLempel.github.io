@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Oracle基础类型</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/oracleji-chu-lei-xing.html" rel="bookmark"
+           title="Permalink to Oracle基础类型">Oracle基础类型</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Thu 04 June 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-06-04T22:00:00+08:00">
+                Published: Thu 04 June 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>char相关类型比较</h2>
+<p>CHAR, VARCHAR, VARCHAR2 在性能上区别不大</p>
+<p>VARCHAR2：节省空间
+CHAR：效率上稍好  </p>
+<p>比如：一个VARCHAR2列经常被修改，而且每次被修改的数据的长度不同，这会引起‘行迁移’(RowMigration)现象，而这造成多余的I/O。所以此时最好使用CHAR。</p>
+<p>CHAR适用场景： 固定长度； 短信息； 频繁该改变的列</p>
+<h2>inner data types</h2>
+<p>store character (alphanumeric) data in strings, with byte values corresponding to the character encoding scheme</p>
+<ul>
+<li>
+<p>CHAR
+    定长， 默认1byte，范围1 to 2000 bytes （or characters）.
+    不足，则默认填充空
+    超过长度，则报错</p>
+</li>
+<li>
+<p>VARCHAR2
+    可变长
+    1 to 4000 bytes</p>
+</li>
+<li>
+<p>VARCHAR
+    语义和VARCHAR2相同，但为了避免可能的行为改变，通常使用VARCHAR2
+    VARCHAR is an ANSI-standard data type that supports a distinction between NULL and empty strings. 后续版本已经不区分NULL和空字符串的区别了。在Oracle中，null和空字符串是一个意思。常用null来进行判断。</p>
+</li>
+<li>
+<p>NCHAR
+    Unicode datatypes that store Unicode character data(可以存储任何语言)
+    only support AL16UTF16 and UTF8 
+    only use  character length semantics
+    max limit to 2000 characters (also limit to 2000 bytes), two constraints</p>
+</li>
+<li>
+<p>NVARCHAR2
+     character length semantics
+    max limit to 4000 characters(also limit to 4000 bytes)</p>
+</li>
+<li>
+<p>LONG
+    store variable-length character data containing up to 2 gigabytes of information
+    do not use this, use CLOB or NCLOB instead</p>
+</li>
+<li>
+<p>CLOB</p>
+</li>
+<li>
+<p>NCLOB
+    store up to 8 terabytes of character data (CLOB) or national character set data (NCLOB).</p>
+</li>
+<li>
+<p>NUMBER
+    decimal precision
+    固定和浮点数</p>
+</li>
+<li>
+<p>BINARY_FLOAT</p>
+</li>
+<li>
+<p>BINARY_FLOAT
+    binary precision</p>
+</li>
+<li>
+<p>DATE
+    内部格式存储
+    相减结构为：天</p>
+</li>
+<li>
+<p>DATETIME
+     stores the fractional seconds:  TIMESTAMP(3) to milliseconds
+    便于计算时间差
+    TIMESTAMP
+    TIMESTAMP WITH TIME ZONE
+    TIMESTAMP WITH LOCAL TIME ZONE</p>
+</li>
+</ul>
+<h2>two semetics</h2>
+<ul>
+<li>
+<p>Byte semantics: default. The real storage size depend on the encoding schema. Character sequence to bytes sequence.</p>
+</li>
+<li>
+<p>Character sematics: treat strings as a sequence of characters. A character is technically a codepoint of the database character set. </p>
+</li>
+</ul>
+<p>example: in a Unicode database, need to store up  five Chinese characters together with five English characters. </p>
+<p>VARCHAR2(20 BYTE) and SUBSTRB(<string>, 1, 20)  [3<em>5 + 1</em>5= 15]</p>
+<p>VARCHAR2(10 CHAR) and SUBSTR(<string>, 1, 10) [1<em>5 + 1</em>5 = 10]</p>
+<h2>reference</h2>
+<p><a href="https://docs.oracle.com/cd/B28359_01/server.111/b28318/datatype.htm#CNCPT012">oracle data types</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
