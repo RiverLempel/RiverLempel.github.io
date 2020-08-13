@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>数据库设计范式</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/shu-ju-ku-she-ji-fan-shi.html" rel="bookmark"
+           title="Permalink to 数据库设计范式">数据库设计范式</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Thu 13 August 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-08-13T22:00:00+08:00">
+                Published: Thu 13 August 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>设计范式</h2>
+<h4>1NF</h4>
+<p>每个属性分量都是不可再分的，原子性
+不能以集合、序列作为属性</p>
+<h4>2NF</h4>
+<p>在1NF基础上，消除非主属性对键的部分依赖
+部分非主属性对键中的部分分量完全依赖
+拆分表解决</p>
+<h4>3NF</h4>
+<p>在2NF基础上，消除非主属性对键的传递依赖
+拆分表解决</p>
+<h4>BCNF</h4>
+<p>在第三范式的基础上，消除主属性之间的部分函数依赖
+如果每一个函数依赖的决定因素都包含键，则R属于BCNF范式
+所有属性（包括主属性和非主属性）都不传递依赖于R的任何候选关键字，那么称关系R是属于BCNF的。或是关系模式R中，每个决定因素都包含关键字（而不是被关键字所包含）</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
