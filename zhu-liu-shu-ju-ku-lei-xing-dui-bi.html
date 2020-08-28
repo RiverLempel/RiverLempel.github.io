@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>主流数据库类型对比</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/zhu-liu-shu-ju-ku-lei-xing-dui-bi.html" rel="bookmark"
+           title="Permalink to 主流数据库类型对比">主流数据库类型对比</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Fri 28 August 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-08-28T22:00:00+08:00">
+                Published: Fri 28 August 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>detail</h2>
+<p>java.sql.Types  Java     IBM DB2     Oracle  Sybase  SQL-SERVER MySql
+bigint  java.lang.long  bigint  number(38, 0)   bigint  bigint   bigint
+binary  byte[]  CHAR FOR BIT DATA   raw binary  image   binary
+bit java.lang.Boolean   N/A bit bit bit bit
+blob    byte[]  blob    blob    blob    blob    blob,mediumblob
+char    java.lang.String     char , graphic char    char    char    enum,set,char 
+clob    java.lang.String     clob, dbclob   clob    clob    clob   <br>
+date    java.sql.Date    date   date    date    date    date,year 
+decimal java.math.BigDecimal    decimal number  decimal, money, smallmoney  decimal  decimal,numeric
+double  java.lang.Double    double   double,precision   double,precision    double,precision   <br>
+float   java.lang.Double    float   float   float   float  <br>
+integer java.lang.Integer   integer integer int integer mediumint,int 
+java_object  java.lang.Object   JAVA_OBJECT JAVA_OBJECT JAVA_OBJECT JAVA_OBJECT<br>
+longvarbinary   byte[]  long varchar for bit data    long raw   image   image  <br>
+longvarchar     java.lang.String    long varchar,long vargraphic    long    text    text   <br>
+numeric java.math.BigDecimal    numeric numeric numeric numeric<br>
+ other  java.lang.Object      other   other other    other <br>
+real    java.lang.Float real    real    real    real    float 
+smallint    java.lang.Integer   smallint    smallint    smallint    smallint    smallint 
+time    java.sql.Time   time    date    time    time    time 
+timestamp   java.sql.Timestamp  timestamp    date   datetime , smalldatetime    datetime    timestamp,datetime 
+tinyint java.lang.Bute  SMALLINT    tinyint     tinyint     tinyint     tinyint 
+varbinary   byte[]  varchar for bit data    raw varbinary   image   varbinary,binary 
+varchar  java.lang.String    varchar, VARGRAPHIC     varchar     varchar     varchar    varchar,tinytext,text </p>
+<h2>reference</h2>
+<p><a href="https://www.cnblogs.com/FlyingPuPu/p/6265353.html">主流数据库类型对比</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
