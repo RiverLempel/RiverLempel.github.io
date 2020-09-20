@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Oracle count</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/oracle-count.html" rel="bookmark"
+           title="Permalink to Oracle count">Oracle count</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 20 September 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-09-20T22:00:00+08:00">
+                Published: Sun 20 September 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>content</h2>
+<p>COUNT 和其他比如AVG的聚合函数对于NULL的处理不同</p>
+<div class="highlight"><pre><span></span><span class="c1">-- COUNT(*) 以记录（row）为单位，（包含空）</span>
+<span class="c1">-- COUNT(1) 等价于COUNT(*)</span>
+<span class="c1">-- COUNT(2) 等价于COUNT(*), 可以认为是别名，实际执行的还是COUNT(*) [底层优化器会把这些都识别成COUNT(*)一样的含义]</span>
+<span class="c1">-- COUNT(fieldName) 以字段值为单位，统计非空的</span>
+<span class="c1">-- DISTINCT 非空和去重</span>
+
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">A_TEST</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="ss">&quot;name&quot;</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">A_TEST</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">A_TEST</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">A_TEST</span>
+</pre></div>
+
+
+<h2>reference</h2>
+<p>http://sql.standout-dev.com/2017/01/count-vs-count1-again/</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
