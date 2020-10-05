@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>PostgreSQL sql</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/postgresql-sql.html" rel="bookmark"
+           title="Permalink to PostgreSQL sql">PostgreSQL sql</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Mon 05 October 2020 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2020-10-05T22:00:00+08:00">
+                Published: Mon 05 October 2020
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>sql</h2>
+<ul>
+<li>
+<p>双引号包裹字段名，表名；否则默认会转成大写</p>
+</li>
+<li>
+<p>query &amp; insert</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">-- example</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="ss">&quot;BASICAIRLINES&quot;</span><span class="p">(</span><span class="ss">&quot;ID&quot;</span><span class="p">,</span> <span class="ss">&quot;gfid&quot;</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="ss">&quot;xxx&quot;</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</pre></div>
+
+
+<ul>
+<li>modify field</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="ss">&quot;public&quot;</span><span class="p">.</span><span class="ss">&quot;flightleg_statistics&quot;</span> <span class="k">ALTER</span> <span class="k">COLUMN</span> <span class="ss">&quot;ID&quot;</span> <span class="k">TYPE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span> 
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="ss">&quot;public&quot;</span><span class="p">.</span><span class="ss">&quot;flightleg_statistics&quot;</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="ss">&quot;GFID&quot;</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">NULL</span><span class="p">;</span> 
+</pre></div>
+
+
+<ul>
+<li>function</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nv">string1</span> <span class="o">||</span> <span class="nv">string2</span>
+
+<span class="nv">substring</span><span class="ss">(</span><span class="nv">from</span> <span class="nv">x</span> <span class="k">for</span> <span class="nv">y</span><span class="ss">)</span> : [<span class="nv">x</span>, <span class="nv">x</span><span class="o">+</span><span class="nv">y</span><span class="ss">)</span>
+
+<span class="nv">lower</span><span class="ss">(</span><span class="nv">xx</span><span class="ss">)</span>
+
+<span class="nv">upper</span><span class="ss">(</span><span class="nv">xx</span><span class="ss">)</span>
+
+<span class="nv">bit_length</span><span class="ss">(</span><span class="nv">xx</span><span class="ss">)</span>
+
+<span class="nv">char_length</span><span class="ss">(</span><span class="nv">xx</span><span class="ss">)</span>
+
+<span class="nv">character_length</span><span class="ss">()</span>
+
+<span class="nv">length</span><span class="ss">(</span><span class="nv">xx</span><span class="ss">)</span>
+
+<span class="nv">cast</span><span class="ss">(</span><span class="nv">xx</span> <span class="nv">as</span> <span class="nv">integer</span><span class="ss">)</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
