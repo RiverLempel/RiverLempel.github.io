@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Flink window</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li class="active"><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/flink-window.html" rel="bookmark"
+           title="Permalink to Flink window">Flink window</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Tue 02 February 2021 &nbsp;
+In <a href="/category/da-shu-ju.html">大数据</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-02-02T22:00:00+08:00">
+                Published: Tue 02 February 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>note</h2>
+<div class="highlight"><pre><span></span><span class="n">event</span> <span class="n">time</span>
+    <span class="err">数据中附带的时间</span>
+    <span class="err">延迟稍高（因为数据乱序以及数据晚到）</span>
+<span class="n">process</span> <span class="n">time</span>
+    <span class="err">和机器有关，某个</span><span class="n">operator收到数据的时间</span>
+
+<span class="n">window会自动对齐</span>
+</pre></div>
+
+
+<h2>window components</h2>
+<p>3 parts：</p>
+<ul>
+<li>分组 （为下游算子多实例并行计算提供可能性）</li>
+<li>窗口分配器（WindowAssigner）</li>
+<li>触发器 （window function： reduce，aggregate，process）</li>
+<li>清除器</li>
+</ul>
+<p>可自定义，否则就使用默认的配置</p>
+<h4>window type</h4>
+<ul>
+<li>
+<p>分类
+tumbling window
+    no overlap
+sliding window
+    with overlap
+session window
+    punctuated by a gap of inactivity
+    窗口的长度是可变的，每个窗口的开始和结束时间并不是确定的。</p>
+</li>
+<li>
+<p>time-based window
+    TimeWIndow: [startTime, endTime)
+    time driving</p>
+</li>
+<li>
+<p>count-based window
+    data driving</p>
+</li>
+</ul>
+<h2>reference</h2>
+<p><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.12/concepts/timely-stream-processing.html">flink stream time</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2020 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
