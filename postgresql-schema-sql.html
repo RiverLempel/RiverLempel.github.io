@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>PostgreSQL schema sql</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/postgresql-schema-sql.html" rel="bookmark"
+           title="Permalink to PostgreSQL schema sql">PostgreSQL schema sql</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Mon 08 March 2021 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-03-08T22:00:00+08:00">
+                Published: Mon 08 March 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>schema sql</h2>
+<div class="highlight"><pre><span></span><span class="c1">-- 列举table所有字段</span>
+<span class="k">select</span>
+<span class="ss">&quot;column_name&quot;</span><span class="p">,</span>
+<span class="ss">&quot;data_type&quot;</span><span class="p">,</span>
+<span class="ss">&quot;character_maximum_length&quot;</span><span class="p">,</span>
+<span class="ss">&quot;is_nullable&quot;</span>
+<span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span> <span class="k">where</span> <span class="k">table_name</span> <span class="o">=</span><span class="s1">&#39;xxx&#39;</span> <span class="k">order</span> <span class="k">by</span> <span class="n">ordinal_position</span><span class="p">;</span>
+
+
+<span class="c1">-- 表信息（index、view、sequence、view、materialized view...)</span>
+<span class="c1">-- 包含所有有column的“表”， 包括index等</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_class</span><span class="p">;</span>
+
+
+<span class="c1">-- queryl all tables， material views</span>
+<span class="k">SELECT</span> <span class="n">tablename</span> <span class="k">FROM</span> <span class="n">pg_tables</span>  
+<span class="k">WHERE</span> <span class="n">tablename</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;pg%&#39;</span>  
+<span class="k">AND</span> <span class="n">tablename</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;sql_%&#39;</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">tablename</span><span class="p">;</span>  
+
+<span class="c1">-- 视图</span>
+<span class="k">SELECT</span> <span class="n">viewname</span> <span class="k">FROM</span> <span class="n">pg_views</span>  
+<span class="k">WHERE</span> <span class="n">schemaname</span> <span class="o">=</span><span class="s1">&#39;public&#39;</span> 
+
+
+<span class="c1">-- 所有字段的注释</span>
+<span class="k">select</span> <span class="n">col_description</span><span class="p">(</span><span class="n">attrelid</span><span class="p">,</span> <span class="n">attnum</span><span class="p">)</span> <span class="k">from</span> <span class="n">pg_attribute</span><span class="p">;</span>
+
+<span class="c1">-- 表的字段的信息</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_attribute</span><span class="p">;</span>
+
+
+<span class="c1">-- find table comment</span>
+<span class="c1">-- attnum 字段的编号，普通字段是从1开始计数的。系统字段，如oid，是任意的负数</span>
+<span class="k">SELECT</span>
+ <span class="n">A</span><span class="p">.</span><span class="n">attname</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span>
+ <span class="n">A</span><span class="p">.</span><span class="n">attnotnull</span> <span class="k">AS</span> <span class="k">NOTNULL</span><span class="p">,</span>
+ <span class="n">format_type</span> <span class="p">(</span> <span class="n">A</span><span class="p">.</span><span class="n">atttypid</span><span class="p">,</span> <span class="n">A</span><span class="p">.</span><span class="n">atttypmod</span> <span class="p">)</span> <span class="k">AS</span> <span class="k">TYPE</span><span class="p">,</span>
+ <span class="n">col_description</span> <span class="p">(</span> <span class="n">A</span><span class="p">.</span><span class="n">attrelid</span><span class="p">,</span> <span class="n">A</span><span class="p">.</span><span class="n">attnum</span> <span class="p">)</span> <span class="k">AS</span> <span class="k">COMMENT</span>
+<span class="k">FROM</span>
+ <span class="n">pg_class</span> <span class="k">AS</span> <span class="k">C</span><span class="p">,</span>
+ <span class="n">pg_attribute</span> <span class="k">AS</span> <span class="n">A</span> 
+<span class="k">WHERE</span>
+ <span class="k">C</span><span class="p">.</span><span class="n">relname</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span> 
+ <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="n">attrelid</span> <span class="o">=</span> <span class="k">C</span><span class="p">.</span><span class="n">oid</span> 
+ <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="n">attnum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">-- 查询物化视图</span>
+<span class="k">select</span> <span class="n">schemaname</span> <span class="k">as</span> <span class="k">schema_name</span><span class="p">,</span>
+       <span class="n">matviewname</span> <span class="k">as</span> <span class="n">view_name</span><span class="p">,</span>
+       <span class="n">matviewowner</span> <span class="k">as</span> <span class="k">owner</span><span class="p">,</span>
+       <span class="n">ispopulated</span> <span class="k">as</span> <span class="n">is_populated</span><span class="p">,</span>
+       <span class="n">definition</span>
+<span class="k">from</span> <span class="n">pg_matviews</span>
+<span class="k">order</span> <span class="k">by</span> <span class="k">schema_name</span><span class="p">,</span>
+         <span class="n">view_name</span><span class="p">;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2014-2021 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
