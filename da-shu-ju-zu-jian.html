@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>大数据组件</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li class="active"><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/da-shu-ju-zu-jian.html" rel="bookmark"
+           title="Permalink to 大数据组件">大数据组件</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 28 March 2021 &nbsp;
+In <a href="/category/da-shu-ju.html">大数据</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-03-28T22:00:00+08:00">
+                Published: Sun 28 March 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h1>分层</h1>
+<h2>分布式基础</h2>
+<ul>
+<li>
+<p>一致性
+    Zookeeper  </p>
+</li>
+<li>
+<p>资源调度
+    YARN： hadoop资源管理工具  </p>
+</li>
+<li>
+<p>负载均衡
+    Nginx： web服务器http和反向代理服务器，负载均衡</p>
+</li>
+</ul>
+<h2>probe 数据采集 / ingestion</h2>
+<ul>
+<li>
+<p>数据同步
+    DataX： 异构数据源之间的离线同步
+    Sqoop： hadoop &lt;-&gt; rdb （SQL-to-Hadoop）
+    Flume: 日志收集工具</p>
+</li>
+<li>
+<p>定时任务
+    Quartz</p>
+</li>
+</ul>
+<h2>数据管道 data channel</h2>
+<ul>
+<li>Message Queue
+    Kafka
+    RabbitMQ
+    ActiveMQ</li>
+</ul>
+<h2>storage 数据集存储/data lake</h2>
+<div class="highlight"><pre><span></span><span class="n">Hadoop</span> <span class="err">的</span> <span class="n">HDFS</span> <span class="err">（分布式文件系统</span> <span class="n">Hadoop</span> <span class="n">Distributed</span> <span class="n">File</span> <span class="k">System</span><span class="err">）</span>
+<span class="n">HBase</span><span class="err">：分布式列式存储</span>
+<span class="n">Hive</span><span class="err">：基于</span><span class="n">Hadoop和SQL</span><span class="err">，大规模数据查询</span> <span class="err">（大数据的数仓）</span>
+<span class="n">ElasticSearch</span><span class="err">：全文检索，快速搜索</span>
+<span class="n">Neo4j</span> <span class="err">图数据库</span>
+</pre></div>
+
+
+<h2>calculation 计算 / analysis</h2>
+<div class="highlight"><pre><span></span><span class="n">Hadoop</span> <span class="err">的</span> <span class="n">MapReduce</span>
+<span class="n">Spark</span> <span class="err">基于内存的计算引擎</span>
+
+<span class="n">Impala</span><span class="err">：对</span><span class="n">HDFS</span><span class="err">，</span><span class="n">HBase数据进行交互式SQL查询</span>
+<span class="n">Storm</span> <span class="err">分布式流式处理框架</span>
+<span class="n">Flink</span> <span class="err">分布式批流处理框架，有状态计算</span>
+<span class="n">Kylin</span> <span class="err">开源分布式分析引擎，</span><span class="n">OLAP</span>
+<span class="n">Druid</span> <span class="err">冷数据集存储、分析、查询</span>
+
+<span class="n">Pig</span> <span class="err">分析和评估</span>
+</pre></div>
+
+
+<h2>service 服务 / consumption</h2>
+<ul>
+<li>
+<p>可视化
+    BI系统： FineBI
+    Tableau
+    Power BI
+    Kibana: 分析和可视化（结合ElasticSearch使用）</p>
+</li>
+<li>
+<p>数据服务
+    Spring
+    SpringBoot
+    消息队列：Kafka，RabbitMQ</p>
+</li>
+<li>
+<p>数据挖掘</p>
+</li>
+<li>
+<p>机器学习
+    TensorFlow</p>
+</li>
+<li>
+<p>推荐系统</p>
+</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2014-2021 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
