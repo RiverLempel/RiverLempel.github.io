@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>置空问题</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/zhi-kong-wen-ti.html" rel="bookmark"
+           title="Permalink to 置空问题">置空问题</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 09 May 2021 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-05-09T22:00:00+08:00">
+                Published: Sun 09 May 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <p>置空操作：明确表示抹掉数据操作，不同类型的空值也不同；在不同协议场景下，可能是发送空值，也可能是缺失，来实现</p>
+<p>空值：表示一种类型为空的值，不同类型不同。
+缺失：未发送，不知道值是什么，一般取默认值。不同数据类型的默认值不同。</p>
+<ul>
+<li>
+<p>相同点：
+    初步看两者类似，都是有一个默认的或者自定义的值</p>
+</li>
+<li>
+<p>不同点：
+    一个是空值；另一个是默认值（可能为空值，也可能不为空值，类比DB字段默认值，Java数据类型默认值）</p>
+<p>针对不同业务场景代表的含义不同，比如：如果每次都是全量发送（必需有一个标识，也就是广义上的ID），那么内容上的空值和缺失，含义都可以理解为置空。如果是增量发送，那么空值表示置空，缺失表示ignore。（important）</p>
+</li>
+<li>
+<p>具体实现
+    Java Json序列化的null问题，
+    FastJson 过滤/保留 NULL值问题， JSON string &lt;-&gt; Java Bean</p>
+</li>
+<li>
+<p>Java中的问题
+    Java Bean -&gt; Json String (一对多，按照需求进行序列化）
+    但是反过来就不一定可以完整恢复了，因为Java Bean无法区分你为空的和为null的情况。
+    只能使用JSONObject自身的isNull方法来判断（fastjson中没有这个方法）（所以尽量在序列化时避免置空和空无法区分的情况，也就是不要直接用null表示置空值，而是使用各类型相关的置空值）
+    以及对于null 和 "null" 不同框架的处理不一样（比较迷惑）</p>
+</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2014-2021 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
