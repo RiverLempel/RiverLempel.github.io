@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>IBM WMB</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/ibm-wmb.html" rel="bookmark"
+           title="Permalink to IBM WMB">IBM WMB</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 30 May 2021 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-05-30T22:00:00+08:00">
+                Published: Sun 30 May 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>basic</h2>
+<p>技术点：
+​    OS的页缓存技术
+​    文件顺序写（append）
+​    zero-copy</p>
+<p>数据存储：
+使用文件系统和操作系统的页缓存（page cache）分别存储和缓存消息，摒弃了Java的堆缓存机制，同时将随机写操作改为顺序写，再结合Zero-Copy的特性极大地改善了IO性能。</p>
+<p>日志索引文件（“.index”和“.timeindex”）和日志数据文件（“.log”）</p>
+<p>topic的partition数量修改时，只能增加</p>
+<p>确保信息传输，并且是一次且仅一次(once-and-only-once)的传递
+消息需要确认</p>
+<ul>
+<li>队列管理器
+通道：消息通道（单项），MQI通道（双向，通信）和Cluster通道（集群内通信） （队列管理器之间传递消息的管道）</li>
+</ul>
+<p>同一个QM，多实例
+使用网络存储，共享数据和日志等文件
+活动实例
+备用实例（仅仅当活动实例不可用时，才会切换成活动实例）</p>
+<ul>
+<li>队列
+存储消息</li>
+<li>message
+   header(消息的优先级、生命周期、消息Id等), body
+    分类：非永久性(non-persistent)消息[内存]和永久性(persistent)消息</li>
+</ul>
+<p>config：
+host/ip, port, ccsid(字符集的标识)
+channel
+queue：接收队列、发送队列
+其他设置，长连</p>
+<h2>tool</h2>
+<p>IBM MQ Console 是基于 Web 的图形控制台，用于管理和配置。</p>
+<p>IBM MQ Explorer 提供图形用户界面 (GUI)</p>
+<h2>reference</h2>
+<p>https://www.ibm.com/docs/en/ibm-mq/7.5?topic=75-basic-concepts-key-terms</p>
+<p>https://developer.ibm.com/components/ibm-mq/articles/mq-fundamentals/</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2014-2021 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
