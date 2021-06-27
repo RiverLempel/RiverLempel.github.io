@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>jdbc connection</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/jdbc-connection.html" rel="bookmark"
+           title="Permalink to jdbc connection">jdbc connection</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 27 June 2021 &nbsp;
+In <a href="/category/shu-ju-ku.html">数据库</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-06-27T22:00:00+08:00">
+                Published: Sun 27 June 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>basic</h2>
+<p>Properties are preceded by a question mark “?” and written as key=value pairs separated by the “&amp;” symbol</p>
+<h2>jdbc connection</h2>
+<div class="highlight"><pre><span></span><span class="n">oracle</span><span class="w"> </span><span class="p">(</span><span class="n">complex</span><span class="p">)</span><span class="err">：</span><span class="w"></span>
+<span class="mf">1.</span><span class="w"> </span><span class="n">Connecting</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">SID</span><span class="w"></span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Connecting</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">Oracle</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">URL</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">tnsnames</span><span class="p">.</span><span class="n">ora</span><span class="w"> </span><span class="n">entries</span><span class="w"></span>
+
+
+<span class="n">老版本</span><span class="w"> </span><span class="n">oracle</span><span class="w"></span>
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">oracle</span><span class="p">:</span><span class="nl">thin</span><span class="p">:</span><span class="o">[</span><span class="n">&lt;user&gt;/&lt;password&gt;</span><span class="o">]</span><span class="err">@</span><span class="o">&lt;</span><span class="k">host</span><span class="o">&gt;[</span><span class="n">:&lt;port&gt;</span><span class="o">]</span><span class="err">:</span><span class="o">&lt;</span><span class="n">SID</span><span class="o">&gt;</span><span class="w"></span>
+
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">oracle</span><span class="p">:</span><span class="nl">thin</span><span class="p">:</span><span class="o">[</span><span class="n">&lt;user&gt;/&lt;password&gt;</span><span class="o">]</span><span class="err">@</span><span class="o">//&lt;</span><span class="k">host</span><span class="o">&gt;[</span><span class="n">:&lt;port&gt;</span><span class="o">]/&lt;</span><span class="n">service</span><span class="o">&gt;</span><span class="w"></span>
+
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">oracle</span><span class="p">:</span><span class="nl">thin</span><span class="p">:</span><span class="err">@</span><span class="p">(</span><span class="n">DESCRIPTION</span><span class="o">=</span><span class="p">(</span><span class="n">ADDRESS</span><span class="o">=</span><span class="p">(</span><span class="n">PROTOCOL</span><span class="o">=</span><span class="n">TCP</span><span class="p">)(</span><span class="k">HOST</span><span class="o">=&lt;</span><span class="k">host</span><span class="o">&gt;</span><span class="p">)(</span><span class="n">PORT</span><span class="o">=&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p">))(</span><span class="n">CONNECT_DATA</span><span class="o">=</span><span class="p">(</span><span class="n">SERVICE_NAME</span><span class="o">=&lt;</span><span class="n">service</span><span class="o">&gt;</span><span class="p">)))</span><span class="w"></span>
+
+
+<span class="n">protocol</span><span class="o">//[</span><span class="n">hosts</span><span class="o">][</span><span class="n">/database</span><span class="o">][</span><span class="n">?properties</span><span class="o">]</span><span class="w"></span>
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">xxxx</span><span class="p">:</span><span class="o">//[</span><span class="n">serverName[\instanceName</span><span class="o">][</span><span class="n">:portNumber</span><span class="o">]</span><span class="err">]</span><span class="o">[</span><span class="n">;property=value[;property=value</span><span class="o">]</span><span class="err">]</span><span class="w"></span>
+
+<span class="n">oracle</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">OracleDriver</span><span class="w"></span>
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">oracle</span><span class="p">:</span><span class="nl">thin</span><span class="p">:</span><span class="o">[</span><span class="n">&lt;user&gt;/&lt;password&gt;</span><span class="o">]</span><span class="err">@</span><span class="o">&lt;</span><span class="k">host</span><span class="o">&gt;[</span><span class="n">:&lt;port&gt;</span><span class="o">]</span><span class="err">:</span><span class="o">&lt;</span><span class="n">SID</span><span class="o">&gt;</span><span class="w"></span>
+
+<span class="n">com</span><span class="p">.</span><span class="n">mysql</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">Driver</span><span class="w"></span>
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">mysql</span><span class="p">:</span><span class="o">//[</span><span class="n">host</span><span class="o">][</span><span class="n">,failoverhost...</span><span class="o">][</span><span class="n">:3306</span><span class="o">]/[</span><span class="n">database</span><span class="o">][</span><span class="n">?propertyName1</span><span class="o">][</span><span class="n">=propertyValue1</span><span class="o">][</span><span class="n">&amp;propertyName2</span><span class="o">][</span><span class="n">=propertyValue2</span><span class="o">]</span><span class="w"></span>
+
+<span class="n">org</span><span class="p">.</span><span class="n">postgresql</span><span class="p">.</span><span class="n">Driver</span><span class="w"></span>
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">postgresql</span><span class="p">:</span><span class="o">//</span><span class="k">host</span><span class="err">:</span><span class="mi">5432</span><span class="o">/</span><span class="k">database</span><span class="vm">?</span><span class="k">user</span><span class="o">=</span><span class="n">userName</span><span class="o">&amp;</span><span class="n">password</span><span class="o">=</span><span class="n">pass</span><span class="w"></span>
+
+<span class="o">//</span><span class="n">special</span><span class="w"></span>
+<span class="n">com</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">sqlserver</span><span class="p">.</span><span class="n">SQLServerDriver</span><span class="w"></span>
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">microsoft</span><span class="p">:</span><span class="nl">sqlserver</span><span class="p">:</span><span class="o">//</span><span class="k">host</span><span class="err">:</span><span class="mi">1433</span><span class="p">;</span><span class="n">databasename</span><span class="o">=</span><span class="n">name</span><span class="p">;</span><span class="k">user</span><span class="o">=</span><span class="n">yourUser</span><span class="p">;</span><span class="n">password</span><span class="o">=</span><span class="n">yourPwd</span><span class="w"></span>
+<span class="nl">jdbc</span><span class="p">:</span><span class="nl">sqlserver</span><span class="p">:</span><span class="o">//[</span><span class="n">serverName[\instanceName</span><span class="o">][</span><span class="n">:portNumber</span><span class="o">]</span><span class="err">]</span><span class="o">[</span><span class="n">;property=value[;property=value</span><span class="o">]</span><span class="err">]</span><span class="w"></span>
+</pre></div>
+
+
+<h2>example</h2>
+<h2>oracle concept</h2>
+<p>SID: 唯一标识数据库（或者叫实例）
+ServiceName：别名，一实例可有多个</p>
+<div class="highlight"><pre><span></span><span class="c1">-- 均可用于连接</span>
+
+<span class="c1">-- instance name</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">sys_context</span><span class="p">(</span><span class="s1">&#39;USERENV&#39;</span><span class="p">,</span><span class="s1">&#39;INSTANCE_NAME&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dual</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- database name</span>
+<span class="k">select</span><span class="w"> </span><span class="n">ora_database_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">dual</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- SID</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">sys_context</span><span class="p">(</span><span class="s1">&#39;USERENV&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SID&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- service name</span>
+<span class="k">select</span><span class="w"> </span><span class="n">sys_context</span><span class="p">(</span><span class="s1">&#39;USERENV&#39;</span><span class="p">,</span><span class="s1">&#39;SERVICE_NAME&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">dual</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- 查询</span>
+<span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">[</span><span class="n">userName</span><span class="o">][</span><span class="n">tableName</span><span class="o">]</span><span class="w"></span>
+</pre></div>
+
+
+<h2>reference</h2>
+<p><a href="https://www.baeldung.com/java-jdbc-url-format">jdbc url format</a></p>
+<p><a href="https://blog.csdn.net/wfanking/article/details/95504879">parameter</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2014-2021 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
