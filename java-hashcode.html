@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>java hashcode</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/bian-cheng.html">编程</a></li>
+                    <li><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/java-hashcode.html" rel="bookmark"
+           title="Permalink to java hashcode">java hashcode</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sun 04 July 2021 &nbsp;
+In <a href="/category/bian-cheng.html">编程</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-07-04T22:00:00+08:00">
+                Published: Sun 04 July 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/bian-cheng.html">编程</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>hashcode</h2>
+<p>根据一定的规则将与对象相关的信息（比如对象的存储地址，对象的字段等）映射成一个数值。可能和存储地址有一定关联，但不一定就是地址。</p>
+<p>默认情况下，hashCode方法是将对象的存储地址进行映射。
+两个对象的存储地址不同也有可能得到相同的hashcode值（几率很小）</p>
+<ul>
+<li>比较</li>
+</ul>
+<p>hashCode不同，那么肯定是不同的对象
+hashCode相同，不一定是相同对象</p>
+<p>所以需要重写hashCode方法，让equals方法和hashCode方法始终在逻辑上保持一致性。</p>
+<ul>
+<li>底层实现
+（有多种模式：五种，比如随机[默认]、自增、恒定、基于指针地址）</li>
+</ul>
+<p>对于没有覆盖hashcode()方法的类，实例每次调用hashcode()方法，只有第一次计算哈希值，之后哈希值会存储在对象头的 标记字（MarkWord） 中。</p>
+<p>默认为模式5： Marsaglia's xor-shift 随机数生成法</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2014-2021 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
