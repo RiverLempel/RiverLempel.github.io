@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+        <meta charset="utf-8" />
+        <title>抽样方法</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+		        <!-- notation the name
+                <h1><a href="/">lempel's blog </a></h1>
+				-->
+                <nav><ul>
+				<li><a href="/category/about.html">About</a></li>
+                    <li><a href="/category/bian-cheng.html">编程</a></li>
+                    <li class="active"><a href="/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="/category/hang-kong.html">航空</a></li>
+                    <li><a href="/category/pa-chong.html">爬虫</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/chou-yang-fang-fa.html" rel="bookmark"
+           title="Permalink to 抽样方法">抽样方法</a></h1>
+	  <p> <footer class="post-info">
+
+<P>
+&nbsp;Sat 24 July 2021 &nbsp;
+In <a href="/category/da-shu-ju.html">大数据</a> &nbsp; :)
+</p>
+        
+		<!--
+        <abbr class="published" title="2021-07-24T22:00:00+08:00">
+                Published: Sat 24 July 2021
+        </abbr>
+		
+		
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lempel.html">lempel</a>
+        </address>
+		
+<p>In <a href="/category/da-shu-ju.html">大数据</a>.</p>
+-->
+
+</footer><!-- /.post-info --></p>
+    </header>
+
+    <div class="entry-content">
+ <!-- 注释时间等信息栏-->
+      <h2>抽样</h2>
+<p>抽样是一种方法，它使我们能够基于子集(样本)的统计信息来获取总体信息，而无需调查所有样本。（样本代表总体）</p>
+<h2>抽样技术</h2>
+<p>概率（随机抽样：等概率抽样）</p>
+<ul>
+<li>简单随机：比如蒙特卡罗</li>
+<li>系统抽样/等距抽样：第一个随机，后续按照固定抽样间隔选取 （简单）</li>
+<li>分层抽样：把数据按照特定分组（层），然后每组按比例分别抽样</li>
+<li>整群抽样/聚类抽样： 把数据先分成群，然后以群为单位进行抽样</li>
+</ul>
+<p>非概率/非随机抽样/不等概率抽样 （不具代表性，简单）</p>
+<ul>
+<li>方便抽样又称随意抽样、偶遇抽样</li>
+<li>配额抽样（根据特征分组，然后每组单独配额，在配额内，主观判定选择样本 vs 分层抽样）</li>
+<li>判断抽样/选择性抽样（专家评定）</li>
+<li>雪球抽样（推荐，认识的推荐认识的）：舆论研究，社区研究。介于随机抽样和非随机抽样</li>
+</ul>
+<h2>蓄水池抽样算法（Reservoir Sampling）</h2>
+<p>问题：
+给定一个数据流，数据流长度N很大，且N直到处理完所有数据之前都不可知，请问如何在只遍历一遍数据（O(N)）的情况下，能够随机选取出m个不重复的数据。</p>
+<p>result： 对于输入的第i个数，在[0, i)产生一个随机数r，如果r在 [0, m) 中，则进行替换，反之不进行操作。这样每个元素被选中留在[0, m) 中的概率为m/n。（n为最后一个数的位置)</p>
+<h2>分布式蓄水池抽样算法 （Distributed/Parallel Reservoir Sampling）</h2>
+<p>在单体蓄水池基础上，再进行一次抽样（可以是不放回抽样）</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+		
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+				Copyright &nbsp;© 2014-2021 &nbsp;lempel. All rights reserved.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
